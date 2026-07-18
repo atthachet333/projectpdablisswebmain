@@ -1,0 +1,161 @@
+[
+  {
+    "id": "starter",
+    "name": {
+      "th": "แพ็กเกจเริ่มต้น",
+      "en": "Starter Plan"
+    },
+    "price": 990,
+    "currency": {
+      "th": "บาท",
+      "en": "THB"
+    },
+    "period": {
+      "th": "เดือน",
+      "en": "mo"
+    },
+    "description": {
+      "th": "เหมาะสำหรับธุรกิจขนาดเล็กที่ต้องการการดูแลพื้นฐาน",
+      "en": "Ideal for small businesses needing basic care."
+    },
+    "badge": null,
+    "highlighted": false,
+    "features": {
+      "th": [
+        { "text": "ตอบคำถามพื้นฐาน", "included": true },
+        { "text": "ติดตามงานเอกสารเบื้องต้น", "included": true },
+        { "text": "อัปเดตข้อมูลสำคัญ", "included": true },
+        { "text": "เหมาะสำหรับธุรกิจขนาดเล็ก", "included": true },
+        { "text": "ติดตามงานเชิงลึก", "included": false },
+        { "text": "สิทธิ์ขอคำปรึกษาเพิ่มเติม", "included": false },
+        { "text": "บริการแบบปรับแต่งเฉพาะ", "included": false },
+        { "text": "ผู้ดูแลประจำ", "included": false },
+        { "text": "สรุปรายงานและวิเคราะห์", "included": false },
+        { "text": "รองรับหลายแผนก", "included": false }
+      ],
+      "en": [
+        { "text": "Basic Q&A", "included": true },
+        { "text": "Basic document tracking", "included": true },
+        { "text": "Important updates alert", "included": true },
+        { "text": "Ideal for small businesses", "included": true },
+        { "text": "Advanced document tracking", "included": false },
+        { "text": "Additional consultation quota", "included": false },
+        { "text": "Customized service solutions", "included": false },
+        { "text": "Dedicated account manager", "included": false },
+        { "text": "Summary and analytical reports", "included": false },
+        { "text": "Multi-department support", "included": false }
+      ]
+    },
+    "cta": {
+      "th": "เลือกแพ็กเกจนี้",
+      "en": "Choose this plan"
+    }
+  },
+  {
+    "id": "professional",
+    "name": {
+      "th": "แพ็กเกจมืออาชีพ",
+      "en": "Professional Plan"
+    },
+    "price": 2990,
+    "currency": {
+      "th": "บาท",
+      "en": "THB"
+    },
+    "period": {
+      "th": "เดือน",
+      "en": "mo"
+    },
+    "description": {
+      "th": "เหมาะกับธุรกิจที่กำลังเติบโตและต้องการการสนับสนุนเชิงลึก",
+      "en": "For growing businesses needing in-depth support."
+    },
+    "badge": {
+      "th": "ยอดนิยม",
+      "en": "Most Popular"
+    },
+    "highlighted": true,
+    "features": {
+      "th": [
+        { "text": "ตอบคำถามพื้นฐาน", "included": true },
+        { "text": "ติดตามงานเอกสารเบื้องต้น", "included": true },
+        { "text": "อัปเดตข้อมูลสำคัญ", "included": true },
+        { "text": "รวมสิทธิ์แพ็กเกจเริ่มต้น", "included": true },
+        { "text": "ติดตามงานเชิงลึก", "included": true },
+        { "text": "สิทธิ์ขอคำปรึกษาเพิ่มเติม", "included": true },
+        { "text": "ช่วยวางแผนงานเอกสารและธุรกิจ", "included": true },
+        { "text": "บริการแบบปรับแต่งเฉพาะ", "included": false },
+        { "text": "ผู้ดูแลประจำ", "included": false },
+        { "text": "รองรับหลายแผนก", "included": false }
+      ],
+      "en": [
+        { "text": "Basic Q&A", "included": true },
+        { "text": "Basic document tracking", "included": true },
+        { "text": "Important updates alert", "included": true },
+        { "text": "Includes Starter features", "included": true },
+        { "text": "Advanced document tracking", "included": true },
+        { "text": "Additional consultation quota", "included": true },
+        { "text": "Document & business planning", "included": true },
+        { "text": "Customized service solutions", "included": false },
+        { "text": "Dedicated account manager", "included": false },
+        { "text": "Multi-department support", "included": false }
+      ]
+    },
+    "cta": {
+      "th": "เลือกแพ็กเกจนี้",
+      "en": "Choose this plan"
+    }
+  },
+  {
+    "id": "enterprise",
+    "name": {
+      "th": "แพ็กเกจองค์กร",
+      "en": "Enterprise Plan"
+    },
+    "price": 6990,
+    "currency": {
+      "th": "บาท",
+      "en": "THB"
+    },
+    "period": {
+      "th": "เดือน",
+      "en": "mo"
+    },
+    "description": {
+      "th": "เหมาะสำหรับองค์กรขนาดใหญ่และโรงงานที่ต้องการบริการครบวงจร",
+      "en": "For large organizations and factories requiring full service."
+    },
+    "badge": null,
+    "highlighted": false,
+    "features": {
+      "th": [
+        { "text": "ตอบคำถามพื้นฐาน", "included": true },
+        { "text": "ติดตามงานเอกสารเบื้องต้น", "included": true },
+        { "text": "อัปเดตข้อมูลสำคัญ", "included": true },
+        { "text": "รวมสิทธิ์แพ็กเกจมืออาชีพ", "included": true },
+        { "text": "ติดตามงานเชิงลึก", "included": true },
+        { "text": "สิทธิ์ขอคำปรึกษาเพิ่มเติม", "included": true },
+        { "text": "บริการแบบปรับแต่งเฉพาะ", "included": true },
+        { "text": "ผู้ดูแลประจำ", "included": true },
+        { "text": "สรุปรายงานและวิเคราะห์", "included": true },
+        { "text": "รองรับหลายแผนก", "included": true }
+      ],
+      "en": [
+        { "text": "Basic Q&A", "included": true },
+        { "text": "Basic document tracking", "included": true },
+        { "text": "Important updates alert", "included": true },
+        { "text": "Includes Professional features", "included": true },
+        { "text": "Advanced document tracking", "included": true },
+        { "text": "Additional consultation quota", "included": true },
+        { "text": "Customized service solutions", "included": true },
+        { "text": "Dedicated account manager", "included": true },
+        { "text": "Summary and analytical reports", "included": true },
+        { "text": "Multi-department support", "included": true }
+      ]
+    },
+    "cta": {
+      "th": "เลือกแพ็กเกจนี้",
+      "en": "Choose this plan"
+    }
+  }
+]

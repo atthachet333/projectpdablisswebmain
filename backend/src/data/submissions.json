@@ -1,0 +1,14 @@
+[
+  {
+    "fullName": "ทดสอบ ระบบ",
+    "companyName": "บริษัท ทดสอบ",
+    "email": "test@example.com",
+    "phone": "0812345678",
+    "subject": "สอบถามบริการทั่วไป",
+    "service": "",
+    "message": "ทดสอบการส่งข้อความผ่านระบบ contact API",
+    "privacyAccepted": true,
+    "id": "31a3267a-0b7b-4dda-bf6f-a34ab812aed9",
+    "createdAt": "2026-07-18T14:06:27.669Z"
+  }
+]

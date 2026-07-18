@@ -1,0 +1,104 @@
+[
+  {
+    "id": "foreign-labor-docs",
+    "title": {
+      "th": "บริการจัดการเอกสารแรงงานต่างด้าว",
+      "en": "Migrant Workforce Documentation"
+    },
+    "shortTitle": {
+      "th": "เอกสารแรงงานต่างด้าว",
+      "en": "Workforce Documents"
+    },
+    "description": {
+      "th": "ดูแลเอกสาร การนำเข้า ถูกต้อง รวดเร็ว ลดความเสี่ยงและภาระงานของคุณ ด้วยทีมงานผู้เชี่ยวชาญที่มีประสบการณ์",
+      "en": "Manage documents, imports accurately and quickly. Reduce risks and workload with our experienced team."
+    },
+    "icon": "FileText",
+    "features": {
+      "th": [
+        "เตรียมเอกสารครบถ้วน",
+        "ยื่นคำขอและต่ออายุ",
+        "ติดตามสถานะ",
+        "ประสานงานหน่วยงานที่เกี่ยวข้อง",
+        "ให้คำแนะนำด้านข้อกำหนด"
+      ],
+      "en": [
+        "Complete document preparation",
+        "Application & renewal submission",
+        "Status tracking",
+        "Coordination with authorities",
+        "Guidance on regulations"
+      ]
+    },
+    "color": "green",
+    "href": "/services#foreign-labor"
+  },
+  {
+    "id": "membership-service",
+    "title": {
+      "th": "บริการสมาชิก (Subscription)",
+      "en": "Membership Services (Subscription)"
+    },
+    "shortTitle": {
+      "th": "บริการสมาชิก",
+      "en": "Membership"
+    },
+    "description": {
+      "th": "แพ็กเกจสมาชิกสำหรับธุรกิจที่ต้องการผู้ช่วยมืออาชีพดูแลต่อเนื่อง และสม่ำเสมอ อัปเดตข้อมูลสำคัญ ไม่พลาดทุกกำหนด",
+      "en": "Membership packages for businesses needing continuous professional support. Regular updates, never miss a deadline."
+    },
+    "icon": "Users",
+    "features": {
+      "th": [
+        "ดูแลต่อเนื่องรายเดือน",
+        "อัปเดตข้อมูลสำคัญ",
+        "ตอบคำถามรวดเร็ว",
+        "ช่วยวางแผนงานเอกสาร",
+        "มีทีมงานคอยติดตาม"
+      ],
+      "en": [
+        "Monthly continuous care",
+        "Important updates alert",
+        "Fast response to queries",
+        "Document planning assistance",
+        "Dedicated monitoring team"
+      ]
+    },
+    "color": "purple",
+    "href": "/services#membership"
+  },
+  {
+    "id": "business-consulting",
+    "title": {
+      "th": "ที่ปรึกษาด้านธุรกิจ บัญชี อุตสาหกรรม และเส้นทางการเงิน",
+      "en": "Business, Accounting & Financial Consulting"
+    },
+    "shortTitle": {
+      "th": "ที่ปรึกษาธุรกิจ",
+      "en": "Consulting"
+    },
+    "description": {
+      "th": "วางแผนธุรกิจ วิเคราะห์ด้วยทุน พัฒนากระบวนการ และออกแบบแนวทางการเงิน เพื่อเพิ่มศักยภาพในการแข่งขัน",
+      "en": "Business planning, cost analysis, process improvement, and financial pathway design to boost competitiveness."
+    },
+    "icon": "TrendingUp",
+    "features": {
+      "th": [
+        "วิเคราะห์ธุรกิจ",
+        "จัดทำแผนงาน",
+        "วิเคราะห์ต้นทุน",
+        "ปรับปรุงกระบวนการ",
+        "วางแผนการเติบโต"
+      ],
+      "en": [
+        "Business analysis",
+        "Action plan development",
+        "Cost analysis",
+        "Process improvement",
+        "Growth planning"
+      ]
+    },
+    "color": "blue",
+    "href": "/services#consulting"
+  }
+]

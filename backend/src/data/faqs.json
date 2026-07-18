@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "category": "general",
+    "question": {
+      "th": "บริการของ PDA BLISS ครอบคลุมอะไรบ้าง?",
+      "en": "What services does PDA BLISS cover?"
+    },
+    "answer": {
+      "th": "PDA BLISS ให้บริการครบวงจร 3 ด้านหลัก ได้แก่ บริการจัดการเอกสารแรงงานต่างด้าว (ครอบคลุมการเตรียมเอกสาร ยื่นคำขอ ต่ออายุ และติดตามสถานะ) บริการสมาชิกรายเดือน (ดูแลต่อเนื่อง อัปเดตข้อมูล ตอบคำถาม) และบริการที่ปรึกษาด้านธุรกิจ บัญชี อุตสาหกรรม และเส้นทางการเงิน",
+      "en": "PDA BLISS offers 3 main services: Migrant Workforce Documentation, Monthly Membership Services (continuous care, updates), and Business, Accounting, Industrial, and Financial Consulting."
+    }
+  },
+  {
+    "id": 2,
+    "category": "membership",
+    "question": {
+      "th": "การสมัครแพ็กเกจสมาชิกมีขั้นตอนอย่างไร?",
+      "en": "What is the process to subscribe to a membership plan?"
+    },
+    "answer": {
+      "th": "สมัครง่ายใน 3 ขั้นตอน: 1) ติดต่อทีมงานเพื่อปรึกษาความต้องการ 2) เลือกแพ็กเกจที่เหมาะกับธุรกิจ 3) ทำสัญญาและชำระเงิน จากนั้นทีมงานจะเริ่มดูแลคุณทันที สามารถติดต่อผ่านทางโทรศัพท์ อีเมล LINE OA หรือกรอกฟอร์มบนเว็บไซต์",
+      "en": "It's easy in 3 steps: 1) Contact our team to discuss your needs. 2) Choose the suitable plan. 3) Sign the contract and make payment. You can contact us via Phone, Email, LINE OA, or the website form."
+    }
+  },
+  {
+    "id": 3,
+    "category": "documents",
+    "question": {
+      "th": "เอกสารที่ใช้ในการจัดตั้งบริษัทมีอะไรบ้าง?",
+      "en": "What documents are required to set up a company?"
+    },
+    "answer": {
+      "th": "เอกสารที่จำเป็นขึ้นอยู่กับประเภทของบริษัทและบริการที่ต้องการ โดยทั่วไปประกอบด้วย สำเนาบัตรประชาชน สำเนาทะเบียนบ้าน เอกสารทางธุรกิจ (ถ้ามี) และเอกสารเพิ่มเติมตามที่หน่วยงานราชการกำหนด ทีมงานจะแนะนำรายละเอียดที่ชัดเจนเมื่อได้รับคำปรึกษา",
+      "en": "Required documents depend on the company type. Generally, it includes ID copies, house registration, and business documents. Our team will guide you through the specifics."
+    }
+  },
+  {
+    "id": 4,
+    "category": "membership",
+    "question": {
+      "th": "หากต้องการยกเลิกบริการต้องทำอย่างไร?",
+      "en": "How can I cancel the service?"
+    },
+    "answer": {
+      "th": "สามารถยกเลิกได้ โดยแจ้งล่วงหน้า 30 วัน ผ่านทางโทรศัพท์ อีเมล LINE OA หรือออนไลน์ที่สะดวกกับภาษีได้ ไม่มีค่าปรับในการยกเลิก และเราจะมอบรายงานสรุปงานทั้งหมดให้ก่อนสิ้นสุดสัญญา",
+      "en": "You can cancel by notifying us 30 days in advance via phone, email, or LINE OA. There are no cancellation fees, and we will provide a final report before the contract ends."
+    }
+  },
+  {
+    "id": 5,
+    "category": "documents",
+    "question": {
+      "th": "ใช้เวลานานแค่ไหนในการดำเนินการเอกสาร?",
+      "en": "How long does document processing take?"
+    },
+    "answer": {
+      "th": "ระยะเวลาขึ้นอยู่กับประเภทของเอกสารและความซับซ้อนของงาน โดยทั่วไปใช้เวลา 3-15 วันทำการ สำหรับงานเร่งด่วนสามารถแจ้งความต้องการได้ ทีมงานจะพยายามดำเนินการให้เร็วที่สุดภายใต้ข้อกำหนดของหน่วยงานราชการ",
+      "en": "Processing time varies by document type, generally taking 3-15 business days. Urgent requests can be accommodated as quickly as government regulations allow."
+    }
+  },
+  {
+    "id": 6,
+    "category": "general",
+    "question": {
+      "th": "สามารถติดต่อขอรับบริการได้ที่ไหนบ้าง?",
+      "en": "Where can I contact for services?"
+    },
+    "answer": {
+      "th": "สามารถติดต่อเราได้หลายช่องทาง ได้แก่ โทรศัพท์ 02-123-4567 อีเมล contact@pdabliss.co.th LINE OA @pdabliss หรือกรอกฟอร์มติดต่อบนเว็บไซต์ ทีมงานพร้อมให้บริการวันจันทร์-ศุกร์ เวลา 09:00-18:00 น.",
+      "en": "You can contact us via Phone: 02-123-4567, Email: contact@pdabliss.co.th, LINE OA: @pdabliss, or the website form. We are available Mon-Fri, 09:00-18:00."
+    }
+  },
+  {
+    "id": 7,
+    "category": "pricing",
+    "question": {
+      "th": "สามารถเปลี่ยนแพ็กเกจได้หรือไม่?",
+      "en": "Can I change my membership plan?"
+    },
+    "answer": {
+      "th": "ได้ คุณสามารถอัปเกรดหรือดาวน์เกรดแพ็กเกจได้ทุกเมื่อ โดยแจ้งล่วงหน้า 7 วัน การเปลี่ยนแปลงจะมีผลในรอบเดือนถัดไป ทีมงานจะช่วยประเมินว่าแพ็กเกจใดเหมาะสมกับความต้องการของธุรกิจคุณมากที่สุด",
+      "en": "Yes, you can upgrade or downgrade at any time with a 7-day notice. Changes take effect in the next billing cycle. Our team can help you choose the best plan."
+    }
+  },
+  {
+    "id": 8,
+    "category": "general",
+    "question": {
+      "th": "มีช่องทางการชำระเงินอะไรบ้าง?",
+      "en": "What payment methods do you accept?"
+    },
+    "answer": {
+      "th": "ชำระเงินได้หลายวิธี ผ่านโอนเงินธนาคาร บัตรเครดิต/เดบิต หรือออนไลน์ Payment ที่สะดวก ราคาที่แสดงยังไม่รวม VAT 7% สำหรับรายละเอียดเพิ่มเติมกรุณาติดต่อทีมงานโดยตรง",
+      "en": "We accept bank transfers, credit/debit cards, and online payments. Displayed prices exclude 7% VAT. Please contact our team for more details."
+    }
+  }
+]

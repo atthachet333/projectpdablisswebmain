@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "name": {
+      "th": "คุณสมศักดิ์ วิทยาธร",
+      "en": "Mr. Somsak Witthayathorn"
+    },
+    "company": {
+      "th": "บริษัท อุตสาหกรรมโกลบอล จำกัด",
+      "en": "Global Industry Co., Ltd."
+    },
+    "position": {
+      "th": "ผู้จัดการฝ่ายบุคคล",
+      "en": "HR Manager"
+    },
+    "rating": 5,
+    "text": {
+      "th": "PDA BLISS ช่วยจัดการเอกสารแรงงานต่างด้าวได้อย่างเป็นระบบ ทีมงานมีความเชี่ยวชาญสูง ตอบคำถามได้รวดเร็ว และงานที่ส่งมอบถูกต้องครบถ้วนทุกครั้ง ทำให้บริษัทของเราสามารถโฟกัสกับงานหลักได้อย่างเต็มที่",
+      "en": "PDA BLISS manages our migrant documentation systematically. The team is highly skilled, responds quickly, and always delivers accurate work, allowing us to focus on our core business."
+    },
+    "avatar": null,
+    "initials": {
+      "th": "สว",
+      "en": "SW"
+    }
+  },
+  {
+    "id": 2,
+    "name": {
+      "th": "คุณพรทิพย์ เจริญสุข",
+      "en": "Ms. Pornthip Charoensuk"
+    },
+    "company": {
+      "th": "โรงงานผลิตเครื่องใช้ไฟฟ้า (ไทย) จำกัด",
+      "en": "Thai Electronics Manufacturing Co., Ltd."
+    },
+    "position": {
+      "th": "กรรมการผู้จัดการ",
+      "en": "Managing Director"
+    },
+    "rating": 5,
+    "text": {
+      "th": "ใช้บริการสมาชิกมาแล้วกว่า 2 ปี ประทับใจมากในความรับผิดชอบและความรอบรู้ของทีมงาน ช่วยวางแผนและติดตามงานเอกสารได้อย่างต่อเนื่อง ไม่พลาดกำหนดการสำคัญเลย แนะนำให้ทุกธุรกิจใช้บริการนี้",
+      "en": "We've been using their membership service for over 2 years and are highly impressed with their responsibility and knowledge. Highly recommended for any growing business."
+    },
+    "avatar": null,
+    "initials": {
+      "th": "พจ",
+      "en": "PC"
+    }
+  },
+  {
+    "id": 3,
+    "name": {
+      "th": "คุณธนวัฒน์ รักษาวงษ์",
+      "en": "Mr. Thanawat Raksawong"
+    },
+    "company": {
+      "th": "บริษัท เน็กซอน อินดัสทรีส์ จำกัด",
+      "en": "Nexon Industries Co., Ltd."
+    },
+    "position": {
+      "th": "ผู้อำนวยการฝ่ายปฏิบัติการ",
+      "en": "Operations Director"
+    },
+    "rating": 5,
+    "text": {
+      "th": "PDA BLISS ช่วยการจัดการเอกสารและสามารถวางแผนธุรกิจของเราได้ ง่ายขึ้นอย่างเห็นได้ชัด ทีมงานตอบไวและให้คำแนะนำที่เป็นประโยชน์มาก",
+      "en": "They handled everything perfectly. Professional team, fast replies, and great advice. We saved a lot of time and resources."
+    },
+    "avatar": null,
+    "initials": {
+      "th": "ธร",
+      "en": "TR"
+    }
+  },
+  {
+    "id": 4,
+    "name": {
+      "th": "คุณนภาพร ตันวิจิตร",
+      "en": "Ms. Naphaporn Tanwichit"
+    },
+    "company": {
+      "th": "บริษัท สมาร์ท โลจิสติกส์ จำกัด",
+      "en": "Smart Logistics Co., Ltd."
+    },
+    "position": {
+      "th": "ผู้จัดการทั่วไป",
+      "en": "General Manager"
+    },
+    "rating": 5,
+    "text": {
+      "th": "บริการที่ปรึกษาด้านธุรกิจของ PDA BLISS ช่วยให้เราเห็นภาพรวมของธุรกิจที่ชัดเจนขึ้น การวิเคราะห์ต้นทุนและการวางแผนการเงินช่วยให้เราตัดสินใจได้อย่างมั่นใจและถูกต้อง",
+      "en": "The business consulting service helped us see a clearer overview. The cost analysis and financial planning enabled us to make confident decisions."
+    },
+    "avatar": null,
+    "initials": {
+      "th": "นต",
+      "en": "NT"
+    }
+  },
+  {
+    "id": 5,
+    "name": {
+      "th": "คุณประสิทธิ์ แสนดี",
+      "en": "Mr. Prasit Saendee"
+    },
+    "company": {
+      "th": "โรงงานแปรรูปอาหาร เจริญ จำกัด",
+      "en": "Charoen Food Processing Factory Co., Ltd."
+    },
+    "position": {
+      "th": "ผู้บริหารสูงสุด",
+      "en": "Chief Executive Officer"
+    },
+    "rating": 5,
+    "text": {
+      "th": "ก่อนมาใช้บริการ PDA BLISS เราต้องเสียเวลาและทรัพยากรมากในการจัดการเอกสาร หลังจากใช้บริการ ทุกอย่างเป็นระบบ ทีมงานมืออาชีพ คุ้มค่ามากครับ ขอแนะนำอย่างยิ่ง",
+      "en": "Before PDA BLISS, we spent a lot of time on paperwork. Now, everything is systematic. The team is professional and highly worth it. Highly recommended."
+    },
+    "avatar": null,
+    "initials": {
+      "th": "ปด",
+      "en": "PS"
+    }
+  }
+]

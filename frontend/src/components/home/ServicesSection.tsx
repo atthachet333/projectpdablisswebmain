@@ -100,35 +100,34 @@ export default function ServicesSection() {
                     {t(`services.items.${service.key}.desc`)}
                   </p>
 
-                  <ul className="space-y-3 mb-10">
+                  <ul className="space-y-4 mb-10">
                     {features && features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className={`w-5 h-5 mt-0.5 ${service.checkIcon} icon-animate transition-transform`} />
-                        <span className={`text-sm md:text-base font-medium ${service.textClass}`}>{feature}</span>
+                      <li key={i} className={`flex items-start gap-3 text-sm md:text-base ${service.descClass}`}>
+                        <CheckCircle2 className={`w-5 h-5 shrink-0 mt-0.5 ${service.checkIcon}`} />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-auto">
+                  <div>
                     <Link
                       to={service.href}
-                      className={`inline-flex items-center gap-3 font-bold text-sm tracking-wide uppercase group/link ${service.accentClass}`}
-                      aria-label={`ดูรายละเอียด ${t(`services.items.${service.key}.title`)}`}
+                      className={`inline-flex items-center gap-3 font-bold text-sm tracking-widest uppercase transition-colors group/link ${service.textClass} hover:${service.accentClass}`}
                     >
-                      {t('common.details', 'Explore Service')}
-                      <span className={`w-8 h-[1px] ${service.accentClass} bg-current transition-all duration-300 group-hover/link:w-12`} />
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1 arrow-animate" />
+                      {t('servicesIntro.explore', 'ดูรายละเอียดบริการ')}
+                      <span className={`w-8 h-[1px] transition-all duration-400 group-hover/link:w-12 bg-current`} />
+                      <ArrowRight className="w-4 h-4 transition-transform duration-400 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
 
                 {/* Image Side */}
-                <div className={`w-full relative z-10 order-2 ${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className={`relative order-2 ${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'} w-full`}>
                   <ServiceImageFrame 
-                    src={service.img} 
+                    src={service.img}
                     alt={t(`services.items.${service.key}.title`)}
+                    accent={index === 0 ? '#19B965' : index === 1 ? '#0B0F0D' : '#19B965'}
                     side={index % 2 !== 0 ? 'left' : 'right'}
-                    className="max-w-[500px] lg:max-w-[580px] h-[360px] lg:h-[440px]"
                   />
                 </div>
               </motion.div>

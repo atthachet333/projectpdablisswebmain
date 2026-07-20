@@ -93,25 +93,6 @@ export default function SmartImage({
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
       />
-      
-      {/* Development Image Label */}
-      {isDev && typeof src === 'object' && showDevLabel && (
-        <div 
-          className="absolute bottom-2 left-2 z-50 bg-black/80 backdrop-blur-sm text-white p-2 rounded-lg text-xs border border-white/10 shadow-lg max-w-[90%] md:max-w-[300px] cursor-pointer group"
-          onClick={() => setShowDevLabel(false)}
-          title="คลิกเพื่อซ่อน Label นี้"
-        >
-          <div className="font-bold text-[#19B965] mb-0.5">{src.page?.toUpperCase()} / {src.section?.toUpperCase()}</div>
-          <div className="font-mono text-[10px] text-gray-300 break-all mb-1">{src.src}</div>
-          
-          <div className="hidden group-hover:block mt-2 pt-2 border-t border-white/20 text-[10.5px] space-y-1">
-            <p><span className="text-gray-400">ชื่อ:</span> {src.labelTh}</p>
-            <p><span className="text-gray-400">ตำแหน่ง:</span> {src.usage}</p>
-            <p><span className="text-gray-400">ขนาดแนะนำ:</span> {src.recommendedSize}</p>
-            <p><span className="text-gray-400">การแสดงผล:</span> {imgFit} ({imgPos})</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

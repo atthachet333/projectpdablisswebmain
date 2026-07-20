@@ -227,7 +227,7 @@ export default function ServicesPage() {
                       alt={service.title}
                       badge={timeline}
                       icon={<Icon />}
-                      fit="contain"
+                      fit="cover"
                       side={isEven ? 'right' : 'left'}
                       className="max-w-[520px] lg:max-w-[620px]"
                     />

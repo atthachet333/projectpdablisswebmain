@@ -61,15 +61,15 @@ export const siteImages: Record<string, Record<string, ImageConfig>> = {
       labelTh: 'ภาพพันธกิจ', labelEn: 'Mission background', usage: 'พื้นหลังการ์ดพันธกิจ', recommendedSize: '1000 × 1000 px', page: 'About', section: 'Mission' 
     },
     teamMember1: { 
-      src: '/images/about/team-01.jpg', fit: 'cover', position: 'center top', scale: 1, 
+      src: '/team-01.jpg', fit: 'cover', position: 'center top', scale: 1, 
       labelTh: 'ภาพทีมงาน 1', labelEn: 'Team Member 1', usage: 'ภาพประจำตัวผู้บริหาร 1', recommendedSize: '800 × 1000 px', page: 'About', section: 'Team' 
     },
     teamMember2: { 
-      src: '/images/about/team-02.jpg', fit: 'cover', position: 'center top', scale: 1, 
+      src: '/team-02.jpg', fit: 'cover', position: 'center top', scale: 1, 
       labelTh: 'ภาพทีมงาน 2', labelEn: 'Team Member 2', usage: 'ภาพประจำตัวผู้บริหาร 2', recommendedSize: '800 × 1000 px', page: 'About', section: 'Team' 
     },
     teamMember3: { 
-      src: '/images/about/team-03.jpg', fit: 'cover', position: 'center top', scale: 1, 
+      src: '/team-03.png', fit: 'cover', position: 'center top', scale: 1, 
       labelTh: 'ภาพทีมงาน 3', labelEn: 'Team Member 3', usage: 'ภาพประจำตัวผู้บริหาร 3', recommendedSize: '800 × 1000 px', page: 'About', section: 'Team' 
     },
     teamMember4: { 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Minus, Sparkles, Info, Star, Building2, Users, Zap, ArrowRight, ShieldCheck, ChevronDown, ChevronUp, CheckCircle2, XCircle, MinusCircle } from 'lucide-react';
 import SectionDivider from '../components/common/SectionDivider';
@@ -110,133 +110,377 @@ function FeatureGroup({ label, items, isDark, isHighlighted }: {
   );
 }
 
+
+
 function ComparisonStrip({ t }: { t: Function }) {
-  const [openMobile, setOpenMobile] = useState(false);
-
-  const rows = t('pricing.comparison.rows', { returnObjects: true }) as Array<{
+  // ── 15-row comparison data with categories and descriptions ──
+  type CellStatus = 'yes' | 'no' | 'partial';
+  type CompRow = {
     label: string;
-    starter: string;
-    pro: string;
-    enterprise: string;
-  }>;
+    desc: string;
+    starter: { status: CellStatus; text: string };
+    pro: { status: CellStatus; text: string };
+    enterprise: { status: CellStatus; text: string };
+  };
+  type Category = { title: string; icon: string; rows: CompRow[] };
 
-  const safeRows = Array.isArray(rows) ? rows : [];
+  const categories: Category[] = [
+    {
+      title: 'การติดต่อ & การตอบกลับ',
+      icon: '📞',
+      rows: [
+        {
+          label: 'เวลาตอบกลับ',
+          desc: 'ระยะเวลาเฉลี่ยที่ทีมงานจะติดต่อกลับในวันทำการ',
+          starter: { status: 'partial', text: 'ภายใน 2 วันทำการ' },
+          pro:     { status: 'yes',     text: 'ภายใน 1 วันทำการ' },
+          enterprise: { status: 'yes',  text: 'ภายใน 4–8 ชั่วโมง' },
+        },
+        {
+          label: 'ช่องทางติดต่อ',
+          desc: 'รูปแบบช่องทางที่ลูกค้าสามารถติดต่อทีมงานได้',
+          starter: { status: 'partial', text: 'ช่องทางมาตรฐาน' },
+          pro:     { status: 'yes',     text: 'ช่องทางลำดับสูง' },
+          enterprise: { status: 'yes',  text: 'ช่องทางด่วนเฉพาะ' },
+        },
+        {
+          label: 'การแจ้งเตือนล่วงหน้า',
+          desc: 'แจ้งเตือนเมื่อเอกสารใกล้หมดอายุหรือมีงานสำคัญ',
+          starter: { status: 'partial', text: 'แจ้งเตือนพื้นฐาน' },
+          pro:     { status: 'yes',     text: 'แจ้งเตือนละเอียด' },
+          enterprise: { status: 'yes',  text: 'แจ้งเตือนเต็มรูปแบบ' },
+        },
+      ],
+    },
+    {
+      title: 'การติดตามงาน',
+      icon: '📋',
+      rows: [
+        {
+          label: 'ระดับการติดตาม',
+          desc: 'ความลึกของการติดตามสถานะงานและเอกสารของลูกค้า',
+          starter: { status: 'partial', text: 'ติดตามขั้นพื้นฐาน' },
+          pro:     { status: 'yes',     text: 'ติดตามเชิงลึก' },
+          enterprise: { status: 'yes',  text: 'ติดตามหลายโปรเจกต์' },
+        },
+        {
+          label: 'รองรับหลายสาขา',
+          desc: 'สามารถดูแลธุรกิจที่มีสาขาหรือแผนกหลายจุด',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'partial', text: 'บางกรณี' },
+          enterprise: { status: 'yes', text: 'รองรับเต็มรูปแบบ' },
+        },
+        {
+          label: 'รองรับหลายแผนก',
+          desc: 'ดูแลประสานงานระหว่างหลายแผนกในองค์กรเดียว',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'partial', text: 'จำกัด' },
+          enterprise: { status: 'yes', text: 'รองรับทุกแผนก' },
+        },
+      ],
+    },
+    {
+      title: 'การให้คำปรึกษา',
+      icon: '💬',
+      rows: [
+        {
+          label: 'จำนวน Session ต่อเดือน',
+          desc: 'ครั้งที่สามารถนัดปรึกษาผู้เชี่ยวชาญโดยตรง',
+          starter: { status: 'partial', text: '1 ครั้ง/เดือน' },
+          pro:     { status: 'yes',     text: '3 ครั้ง/เดือน' },
+          enterprise: { status: 'yes',  text: 'ตามขอบเขตที่ตกลง' },
+        },
+        {
+          label: 'ที่ปรึกษาเฉพาะทาง',
+          desc: 'เข้าถึงทีมผู้เชี่ยวชาญเฉพาะด้านตามประเภทธุรกิจ',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'partial', text: 'ทีม Shared' },
+          enterprise: { status: 'yes', text: 'เชี่ยวชาญเฉพาะอุตสาหกรรม' },
+        },
+        {
+          label: 'การวางแผนธุรกิจ',
+          desc: 'สนับสนุนการวางแผนปฏิบัติการและเอกสารรายเดือน',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'yes',   text: 'วางแผนรายเดือน' },
+          enterprise: { status: 'yes', text: 'รายเดือน + รายไตรมาส' },
+        },
+      ],
+    },
+    {
+      title: 'รายงาน & สรุปผล',
+      icon: '📊',
+      rows: [
+        {
+          label: 'รายงานประจำเดือน',
+          desc: 'สรุปงานที่เสร็จสิ้น กำหนดการล่วงหน้า และคำแนะนำ',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'yes',   text: 'รายงานสรุปรายเดือน' },
+          enterprise: { status: 'yes', text: 'รายงานผู้บริหาร' },
+        },
+        {
+          label: 'รายงานความเสี่ยง',
+          desc: 'วิเคราะห์ความเสี่ยงและให้คำแนะนำเชิงรุก',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'no',    text: 'ไม่รวม' },
+          enterprise: { status: 'yes', text: 'รายงานความเสี่ยงเต็มรูปแบบ' },
+        },
+        {
+          label: 'Dashboard & Analytics',
+          desc: 'ภาพรวมสถานะงานและตัวชี้วัดสำคัญแบบ Real-time',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'partial', text: 'สรุปพื้นฐาน' },
+          enterprise: { status: 'yes', text: 'Dashboard ครบครัน' },
+        },
+      ],
+    },
+    {
+      title: 'การจัดการบัญชี',
+      icon: '🧑‍💼',
+      rows: [
+        {
+          label: 'ผู้ดูแลบัญชีประจำ',
+          desc: 'บุคคลที่รับผิดชอบดูแลบัญชีของลูกค้าโดยตรง',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'partial', text: 'ทีม Shared' },
+          enterprise: { status: 'yes', text: 'Account Manager ส่วนตัว' },
+        },
+        {
+          label: 'บริการปรับแต่งพิเศษ',
+          desc: 'ออกแบบรูปแบบบริการให้ตรงกับความต้องการเฉพาะองค์กร',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'no',    text: 'ไม่รวม' },
+          enterprise: { status: 'yes', text: 'ปรับแต่งเต็มรูปแบบ' },
+        },
+        {
+          label: 'ประชุมทบทวนรายไตรมาส',
+          desc: 'นัดประชุมเพื่อทบทวนผลงานและวางแผนไตรมาสถัดไป',
+          starter: { status: 'no',    text: 'ไม่รวม' },
+          pro:     { status: 'no',    text: 'ไม่รวม' },
+          enterprise: { status: 'yes', text: 'ทุกไตรมาส' },
+        },
+      ],
+    },
+  ];
 
-  const checkIcon = <CheckCircle2 className="w-5 h-5 text-[#064E2B] fill-[#EAF8EF] rounded-full inline-block" />;
-  const minusIcon = <MinusCircle className="w-5 h-5 text-[#9BA89D] inline-block" />;
-  const crossIcon = <XCircle className="w-5 h-5 text-[#9BA89D] fill-[#F3F6F4] rounded-full inline-block" />;
-
-  const getIconForValue = (val: string) => {
-    const v = val.toLowerCase();
-    if (v === 'included' || v === 'yes' || v.includes('included') && !v.includes('not')) return checkIcon;
-    if (v === 'not included' || v === 'no' || v.includes('not included') || v.includes('ไม่รวม')) return crossIcon;
-    if (v === '-') return minusIcon;
-    return val;
+  const statusIcon = (status: CellStatus, isPro: boolean) => {
+    if (status === 'yes') {
+      return (
+        <CheckCircle2
+          className={`w-5 h-5 inline-block tick-wave ${isPro ? 'text-[#9EE6BC]' : 'text-[#19B965]'}`}
+          style={isPro ? {} : { filter: 'drop-shadow(0 0 4px rgba(25,185,101,0.4))' }}
+        />
+      );
+    }
+    if (status === 'no') {
+      return (
+        <XCircle
+          className={`w-5 h-5 inline-block ${isPro ? 'text-[#9EE6BC]/30' : 'text-[#CBD5C0]'}`}
+        />
+      );
+    }
+    return (
+      <MinusCircle
+        className={`w-5 h-5 inline-block ${isPro ? 'text-[#9EE6BC]/50' : 'text-[#A8B0AA]'}`}
+      />
+    );
   };
 
   return (
-    <div className="mt-20 mb-4" id="pricing-comparison">
-      {/* Quick Differences Strip */}
-      <div className="mb-12">
-        <div className="text-center mb-8">
-          <span className="inline-block text-xs font-bold text-[#0E8F4D] uppercase tracking-[0.2em] mb-3 bg-[#EAF8EF] px-5 py-2 rounded-full">
-            {t('pricing.quickDifferences.subtitle', 'At a glance')}
-          </span>
-          <h3 className="text-xl md:text-2xl font-extrabold text-[#0B0F0D]">
-            {t('pricing.quickDifferences.title', 'Quick Differences')}
-          </h3>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          {[
-            { label: t('pricing.quickDifferences.responseTime', 'Response Time'), s: '2 days', p: '1 day', e: '4-8 hrs' },
-            { label: t('pricing.quickDifferences.consultations', 'Consultations'), s: '1/mo', p: '3/mo', e: 'Custom' },
-            { label: t('pricing.quickDifferences.tracking', 'Tracking'), s: 'Basic', p: 'In-depth', e: 'Multi-dept' },
-            { label: t('pricing.quickDifferences.reports', 'Reports'), s: 'None', p: 'Monthly', e: 'Executive' },
-            { label: t('pricing.quickDifferences.dedicatedManager', 'Dedicated Manager'), s: 'No', p: 'Shared', e: 'Yes' }
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white border border-[#E7EBE8] rounded-[16px] p-4 text-center shadow-sm">
-              <p className="text-xs font-bold text-[#747D77] uppercase tracking-wider mb-2">{item.label}</p>
-              <div className="flex flex-col gap-1 text-sm">
-                <span className="text-[#3F4742]">S: {item.s}</span>
-                <span className="text-[#0E8F4D] font-bold">P: {item.p}</span>
-                <span className="text-[#0B0F0D] font-semibold">E: {item.e}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="text-center mb-10">
-        <span className="inline-block text-xs font-bold text-[#0E8F4D] uppercase tracking-[0.2em] mb-3 bg-[#EAF8EF] px-5 py-2 rounded-full">
-          {t('pricing.comparison.title')}
+    <div className="mt-24 mb-4" id="pricing-comparison">
+      {/* Section Header */}
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <span className="inline-block text-xs font-bold text-[#0E8F4D] uppercase tracking-[0.22em] mb-4 bg-[#EAF8EF] px-5 py-2 rounded-full border border-[#9EE6BC]">
+          {t('pricing.comparison.title', 'เปรียบเทียบแพ็กเกจ')}
         </span>
-        <p className="text-[#747D77] text-sm mt-2">
-          {t('pricing.comparison.subtitle', 'Compare features across all packages')}
+        <h3 className="text-2xl md:text-3xl font-extrabold text-[#0B0F0D] mb-3">
+          {t('pricing.whichPackage', 'เลือกแพ็กเกจที่ใช่สำหรับคุณ')}
+        </h3>
+        <p className="text-[#747D77] text-sm md:text-base max-w-xl mx-auto">
+          {t('pricing.comparison.subtitle', 'เปรียบเทียบฟีเจอร์ครบทุกด้านในแต่ละแพ็กเกจ')}
         </p>
-      </div>
+      </motion.div>
 
-      {/* Responsive Table Wrapper */}
-      <div className="overflow-x-auto rounded-[20px] border border-[#E7EBE8] bg-white shadow-[0_4px_24px_rgba(11,15,13,0.06)] relative">
-        <table className="w-full text-sm min-w-[600px] border-collapse" role="table">
-          <caption className="sr-only">{t('pricing.comparison.title')}</caption>
+      {/* Table */}
+      <motion.div
+        className="comparison-scroll rounded-[24px] border border-[#E7EBE8] bg-white shadow-[0_8px_40px_rgba(11,15,13,0.08)] overflow-hidden"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+      >
+        <table className="w-full text-sm min-w-[680px] border-collapse" role="table">
+          <caption className="sr-only">{t('pricing.comparison.title', 'เปรียบเทียบแพ็กเกจ')}</caption>
+
+          {/* ── HEADER ── */}
           <thead>
             <tr className="border-b-2 border-[#E7EBE8]">
-              <th scope="col" className="sticky left-0 z-20 text-left py-5 px-6 font-bold text-[#3F4742] text-xs uppercase tracking-wider bg-[#F3F6F4] border-r border-[#E7EBE8] w-[30%] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
-                {t('pricing.comparison.featureHeader', 'Feature')}
+              {/* Feature col header */}
+              <th
+                scope="col"
+                className="sticky left-0 z-20 text-left py-6 px-6 font-bold text-[#747D77] text-xs uppercase tracking-widest bg-[#F7F9F8] border-r border-[#E7EBE8] w-[36%] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)]"
+              >
+                {t('pricing.comparison.featureHeader', 'ฟีเจอร์')}
               </th>
-              <th scope="col" className="py-5 px-6 font-bold text-center text-[#3F4742] text-sm bg-[#F3F6F4]">
-                {t('pricing.comparison.starterHeader', 'Starter')}
+
+              {/* Starter */}
+              <th scope="col" className="py-6 px-6 font-bold text-center bg-[#F7F9F8] w-[21%]">
+                <div className="flex flex-col items-center gap-1">
+                  <span className="w-8 h-8 rounded-full bg-[#EAF8EF] border border-[#9EE6BC] flex items-center justify-center mb-1">
+                    <Users className="w-4 h-4 text-[#0E8F4D]" />
+                  </span>
+                  <span className="text-[#0B0F0D] font-extrabold text-sm">{t('pricing.comparison.starterHeader', 'Starter')}</span>
+                  <span className="text-[10px] text-[#9BA89D] font-normal tracking-wide">฿990/เดือน</span>
+                </div>
               </th>
-              <th scope="col" className="py-5 px-6 font-bold text-center text-white text-sm bg-[#064E2B] relative">
-                <span className="flex items-center justify-center gap-1.5">
-                  <Sparkles className="w-4 h-4" aria-hidden="true" />
-                  {t('pricing.comparison.proHeader', 'Professional')}
+
+              {/* Professional — highlighted */}
+              <th scope="col" className="py-6 px-6 font-bold text-center bg-[#064E2B] w-[21%] relative overflow-hidden">
+                {/* Neon animated top border */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#19B965] to-transparent animate-[glowLinePulse_3s_ease-in-out_infinite]" />
+                <div className="flex flex-col items-center gap-1">
+                  <span className="w-8 h-8 rounded-full bg-[#19B965]/20 border border-[#9EE6BC]/40 flex items-center justify-center mb-1">
+                    <Sparkles className="w-4 h-4 text-[#9EE6BC]" />
+                  </span>
+                  <span className="text-white font-extrabold text-sm">{t('pricing.comparison.proHeader', 'Professional')}</span>
+                  <span className="text-[10px] text-[#9EE6BC]/70 font-normal tracking-wide">฿2,990/เดือน</span>
+                </div>
+                {/* Popular badge */}
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#19B965] text-[#064E2B] text-[9px] font-extrabold px-3 py-0.5 rounded-b-lg uppercase tracking-widest whitespace-nowrap shadow-[0_2px_10px_rgba(25,185,101,0.5)]">
+                  ⭐ {t('pricing.badge.pro', 'ยอดนิยม')}
                 </span>
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#19B965] text-[#0B0F0D] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-widest whitespace-nowrap">
-                  {t('pricing.badge.pro', 'Popular')}
-                </span>
               </th>
-              <th scope="col" className="py-5 px-6 font-bold text-center text-[#3F4742] text-sm bg-[#F3F6F4]">
-                {t('pricing.comparison.enterpriseHeader', 'Enterprise')}
+
+              {/* Enterprise */}
+              <th scope="col" className="py-6 px-6 font-bold text-center bg-[#F7F9F8] w-[21%]">
+                <div className="flex flex-col items-center gap-1">
+                  <span className="w-8 h-8 rounded-full bg-[#0B0F0D]/05 border border-[#E7EBE8] flex items-center justify-center mb-1">
+                    <Building2 className="w-4 h-4 text-[#3F4742]" />
+                  </span>
+                  <span className="text-[#0B0F0D] font-extrabold text-sm">{t('pricing.comparison.enterpriseHeader', 'Enterprise')}</span>
+                  <span className="text-[10px] text-[#9BA89D] font-normal tracking-wide">฿6,990/เดือน</span>
+                </div>
               </th>
             </tr>
           </thead>
+
+          {/* ── BODY ── */}
           <tbody>
-            {safeRows.map((row, i) => {
-               // Determine tooltip if any
-               let tooltipText = undefined;
-               if (row.label.includes('Response Time') || row.label.includes('เวลาตอบกลับ')) tooltipText = t('pricing.tooltips.responseTime');
-               else if (row.label.includes('Dedicated Manager') || row.label.includes('ผู้ดูแลประจำ')) tooltipText = t('pricing.tooltips.manager');
-               else if (row.label.includes('Reports') || row.label.includes('รายงาน')) tooltipText = t('pricing.tooltips.reports');
-               
-               return (
-                <tr
-                  key={i}
-                  className={`border-b border-[#E7EBE8] last:border-0 transition-colors duration-150 ${
-                    i % 2 === 0 ? 'bg-white hover:bg-[#F9FCF9]' : 'bg-[#FAFCFB] hover:bg-[#F3FBF5]'
-                  }`}
-                >
-                  <td className={`sticky left-0 z-10 py-4 px-6 font-semibold text-[#0B0F0D] text-sm border-r border-[#E7EBE8] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] ${i % 2 === 0 ? 'bg-white' : 'bg-[#FAFCFB]'}`}>
-                    <div className="flex items-center gap-1.5">
-                      {row.label}
-                      {tooltipText && (
-                        <Tooltip text={tooltipText}>
-                          <Info className="w-3.5 h-3.5 opacity-50 hover:opacity-100 cursor-help inline-flex flex-shrink-0" aria-hidden="true" />
-                        </Tooltip>
-                      )}
-                    </div>
+            {categories.map((cat, catIdx) => (
+              <React.Fragment key={`cat-${catIdx}`}>
+                {/* Category separator row */}
+                <tr className="category-row-th">
+                  <td
+                    colSpan={4}
+                    className="py-3 px-6 text-xs font-extrabold text-[#064E2B] uppercase tracking-[0.18em] border-b border-[#E7EBE8]"
+                  >
+                    <span className="mr-2">{cat.icon}</span>
+                    {cat.title}
                   </td>
-                  <td className="py-4 px-6 text-center text-[#3F4742] text-sm">{getIconForValue(row.starter)}</td>
-                  <td className="py-4 px-6 text-center text-sm bg-[#EAF8EF]/40 font-semibold text-[#064E2B] border-x border-[#19B965]/10">
-                    {getIconForValue(row.pro)}
-                  </td>
-                  <td className="py-4 px-6 text-center text-[#3F4742] text-sm">{getIconForValue(row.enterprise)}</td>
                 </tr>
-              );
-            })}
+
+                {/* Feature rows */}
+                {cat.rows.map((row, rowIdx) => {
+                  const isEven = rowIdx % 2 === 0;
+                  return (
+                    <tr
+                      key={`row-${catIdx}-${rowIdx}`}
+                      className={`comparison-row border-b border-[#E7EBE8] last:border-0 ${isEven ? 'bg-white' : 'bg-[#FAFCFB]'}`}
+                    >
+                      {/* Feature label + desc */}
+                      <td
+                        className={`sticky left-0 z-10 py-5 px-6 border-r border-[#E7EBE8] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.07)] ${isEven ? 'bg-white' : 'bg-[#FAFCFB]'}`}
+                      >
+                        <p className="font-semibold text-[#0B0F0D] text-sm leading-tight">{row.label}</p>
+                        <p className="feature-row-desc">{row.desc}</p>
+                      </td>
+
+                      {/* Starter */}
+                      <td className="py-5 px-4 text-center align-middle">
+                        <div className="flex flex-col items-center gap-1.5">
+                          {statusIcon(row.starter.status, false)}
+                          <span className={`text-[11px] leading-snug ${row.starter.status === 'no' ? 'text-[#CBD5C0]' : row.starter.status === 'partial' ? 'text-[#747D77]' : 'text-[#3F4742] font-medium'}`}>
+                            {row.starter.text}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Pro — glowing column */}
+                      <td className={`py-5 px-4 text-center align-middle pro-column-td ${isEven ? 'bg-[#EAF8EF]/40' : 'bg-[#EAF8EF]/25'}`}>
+                        <div className="flex flex-col items-center gap-1.5">
+                          {statusIcon(row.pro.status, true)}
+                          <span className={`text-[11px] leading-snug font-medium ${row.pro.status === 'no' ? 'text-[#A8C0B0]' : 'text-[#064E2B]'}`}>
+                            {row.pro.text}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Enterprise */}
+                      <td className="py-5 px-4 text-center align-middle">
+                        <div className="flex flex-col items-center gap-1.5">
+                          {statusIcon(row.enterprise.status, false)}
+                          <span className={`text-[11px] leading-snug ${row.enterprise.status === 'no' ? 'text-[#CBD5C0]' : row.enterprise.status === 'partial' ? 'text-[#747D77]' : 'text-[#3F4742] font-medium'}`}>
+                            {row.enterprise.text}
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </React.Fragment>
+            ))}
           </tbody>
+
+          {/* ── FOOTER CTA ── */}
+          <tfoot>
+            <tr className="bg-[#F7F9F8] border-t-2 border-[#E7EBE8]">
+              <td className="sticky left-0 z-10 py-5 px-6 bg-[#F7F9F8] border-r border-[#E7EBE8] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.07)]">
+                <span className="text-xs font-bold text-[#747D77] uppercase tracking-wider">เริ่มต้นใช้งาน</span>
+              </td>
+              <td className="py-5 px-4 text-center">
+                <Link to="/contact" className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold border-2 border-[#064E2B] text-[#064E2B] rounded-xl hover:bg-[#064E2B] hover:text-white transition-all duration-300">
+                  {t('pricing.cta', 'เลือกแผนนี้')}
+                </Link>
+              </td>
+              <td className="py-5 px-4 text-center pro-column-td bg-[#064E2B]/05">
+                <Link to="/contact" className="inline-flex items-center justify-center px-5 py-2 text-xs font-extrabold bg-[#064E2B] text-white rounded-xl hover:bg-[#042218] transition-all duration-300 shadow-[0_4px_14px_rgba(6,78,43,0.3)]">
+                  <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+                  {t('pricing.cta', 'เลือกแผนนี้')}
+                </Link>
+              </td>
+              <td className="py-5 px-4 text-center">
+                <Link to="/contact" className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold bg-[#0B0F0D] text-white rounded-xl hover:bg-[#064E2B] transition-all duration-300">
+                  {t('pricing.cta', 'เลือกแผนนี้')}
+                </Link>
+              </td>
+            </tr>
+          </tfoot>
         </table>
-      </div>
+      </motion.div>
+
+      {/* Legend */}
+      <motion.div
+        className="flex flex-wrap items-center justify-center gap-6 mt-6 text-xs text-[#747D77]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+      >
+        <span className="flex items-center gap-1.5">
+          <CheckCircle2 className="w-4 h-4 text-[#19B965]" /> รวมในแพ็กเกจ
+        </span>
+        <span className="flex items-center gap-1.5">
+          <MinusCircle className="w-4 h-4 text-[#A8B0AA]" /> บางกรณี / จำกัด
+        </span>
+        <span className="flex items-center gap-1.5">
+          <XCircle className="w-4 h-4 text-[#CBD5C0]" /> ไม่รวมในแพ็กเกจ
+        </span>
+      </motion.div>
     </div>
   );
 }

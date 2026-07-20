@@ -24,10 +24,8 @@ export default function AboutSection() {
       <div className="container-custom">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center lg:items-stretch">
           
-          {/* Left: Premium Overlapping Images */}
-          <div className="w-full lg:w-1/2 relative group min-h-[500px] flex flex-col justify-center items-center">
-            {/* Subtle ambient glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#064E2B]/5 rounded-full blur-[80px] pointer-events-none" />
+          {/* Left: Full-Bleed Overlapping Images */}
+          <div className="w-full lg:w-1/2 relative group">
 
             <motion.div
               className="relative z-10 w-full"
@@ -36,43 +34,115 @@ export default function AboutSection() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] group-hover:shadow-[0_30px_60px_rgba(25,185,101,0.35)] transition-shadow duration-700">
+              {/* ── Main image: full-bleed, rounded corners, directional shadow ── */}
+              <div
+                className="relative overflow-hidden transition-all duration-700 group-hover:-translate-y-1"
+                style={{
+                  borderRadius: '16px',
+                  /* Directional shadow: heavier bottom-right = natural light from top-left */
+                  filter: 'drop-shadow(0 20px 48px rgba(11,15,13,0.30)) drop-shadow(0 4px 12px rgba(11,15,13,0.15))',
+                }}
+              >
                 <SmartImage
                   src={siteImages.home.aboutMain}
                   alt="สำนักงาน PDA BLISS"
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 transform group-hover:scale-105"
+                  className="w-full aspect-[4/3]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/60 via-transparent to-transparent opacity-80 pointer-events-none" />
-                
+
+                {/* Rich layered overlay inside image — creates depth, not a frame */}
+                {/* Bottom dramatic fade */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(to top, rgba(6,78,43,0.72) 0%, rgba(11,15,13,0.25) 40%, transparent 70%)',
+                  }}
+                />
+                {/* Top subtle vignette */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(ellipse at 50% 0%, rgba(11,15,13,0.20) 0%, transparent 60%)',
+                  }}
+                />
+                {/* Left-edge depth shadow */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(to right, rgba(11,15,13,0.20) 0%, transparent 30%)',
+                  }}
+                />
+                {/* Hover green wash */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.16) 0%, transparent 50%)' }}
+                />
+                {/* Hover shimmer sweep */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none z-10" />
+                {/* Bottom accent line */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20"
+                  style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 35%, #19B965 65%, transparent 95%)' }}
+                />
+
                 {/* Overlay Text on Main Image */}
                 <div className="absolute top-8 inset-x-0 flex flex-col items-center pointer-events-none z-10 px-6 text-center">
-                  <div className="w-12 h-1 bg-[#19B965] mb-4 shadow-[0_0_10px_rgba(25,185,101,0.5)]" />
-                  <p className="font-extrabold text-2xl lg:text-3xl leading-tight drop-shadow-[0_2px_4px_rgba(255,255,255,0.3)]">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#19B965] to-[#0B0F0D]">
+                  <div className="w-12 h-[3px] bg-[#19B965] mb-4 shadow-[0_0_12px_rgba(25,185,101,0.7)]" />
+                  <p className="font-extrabold text-2xl lg:text-3xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+                    <span className="text-white">
                       {t('about.imageText', 'ยกระดับธุรกิจของคุณสู่มาตรฐานสากล')}
                     </span>
                   </p>
                 </div>
               </div>
 
-              {/* Overlapping smaller image */}
-              <motion.div 
-                className="absolute -bottom-8 -right-8 lg:-bottom-12 lg:-right-12 w-[65%] max-w-[340px] z-20 group"
+              {/* ── Overlapping secondary image: rounded card floating over main ── */}
+              <motion.div
+                className="absolute -bottom-8 -right-8 lg:-bottom-10 lg:-right-10 w-[60%] max-w-[320px] z-20 group/sec"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="overflow-hidden shadow-[0_24px_60px_rgba(11,15,13,0.2)] group-hover:shadow-[0_32px_80px_rgba(25,185,101,0.25)] transition-shadow duration-700">
+                {/* Ambient glow blob behind secondary */}
+                <div
+                  className="absolute -inset-6 opacity-30 group-hover/sec:opacity-65 transition-opacity duration-700 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(ellipse at 55% 65%, rgba(25,185,101,0.60) 0%, transparent 65%)',
+                    filter: 'blur(28px)',
+                  }}
+                  aria-hidden="true"
+                />
+
+                {/* Secondary image */}
+                <div
+                  className="relative overflow-hidden transition-all duration-700 group-hover/sec:-translate-y-2"
+                  style={{
+                    borderRadius: '14px',
+                    filter: 'drop-shadow(0 16px 40px rgba(11,15,13,0.35)) drop-shadow(0 4px 12px rgba(11,15,13,0.20))',
+                  }}
+                >
                   <SmartImage
                     src={siteImages.home.aboutSecondary}
                     alt="ทีมงานมืออาชีพ PDA BLISS"
-                    className="w-full aspect-[4/3] object-cover transition-transform duration-700 transform group-hover:scale-110"
+                    className="w-full aspect-[4/3]"
+                  />
+                  {/* Overlay inside secondary */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'linear-gradient(to top, rgba(11,15,13,0.45) 0%, transparent 55%)' }}
+                  />
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover/sec:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.20) 0%, transparent 50%)' }}
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover/sec:opacity-100 transition-opacity duration-500"
+                    style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 40%, #19B965 60%, transparent 95%)' }}
                   />
                 </div>
-                
+
                 {/* Experience Badge */}
-                <div className="absolute -bottom-4 -left-8 bg-[#0B0F0D] text-white p-4 lg:p-5 rounded-2xl shadow-xl flex items-center gap-3 z-30">
+                <div className="absolute -bottom-5 -left-8 bg-[#0B0F0D] text-white p-4 lg:p-5 rounded-2xl shadow-[0_12px_32px_rgba(11,15,13,0.4)] flex items-center gap-3 z-30">
                   <div className="flex flex-col">
                     <span className="text-2xl lg:text-3xl font-num font-extrabold text-[#19B965] leading-none">10+</span>
                   </div>

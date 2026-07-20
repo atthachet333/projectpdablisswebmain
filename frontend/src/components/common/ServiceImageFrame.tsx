@@ -37,87 +37,132 @@ export default function ServiceImageFrame({
   return (
     <motion.div
       className={`relative group w-full ${className}`}
-      initial={isReducedMotion ? { opacity: 0 } : { opacity: 0, x: side === 'left' ? -30 : 30 }}
+      initial={isReducedMotion ? { opacity: 0 } : { opacity: 0, x: side === 'left' ? -40 : 40 }}
       whileInView={isReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Ambient glow behind image */}
+      {/* Ambient color bloom behind image — visible at rest */}
       <div
-        className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse at center, ${accent}28 0%, transparent 70%)`, filter: 'blur(24px)' }}
+        className="absolute -inset-8 opacity-20 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none -z-10"
+        style={{
+          background: `radial-gradient(ellipse 75% 65% at ${side === 'left' ? '35% 65%' : '65% 65%'}, ${accent}60 0%, transparent 70%)`,
+          filter: 'blur(36px)',
+        }}
         aria-hidden="true"
       />
 
-      {/* Main Frame — full-bleed cover */}
+      {/* Main image container — full bleed, rounded, depth via directional drop-shadow */}
       <div
-        className={`relative z-10 w-full shadow-[0_20px_50px_rgba(0,0,0,0.25)] overflow-hidden transition-all duration-500 group-hover:shadow-[0_30px_60px_rgba(25,185,101,0.3)] group-hover:-translate-y-2`}
-        style={{ aspectRatio: '4/3' }}
+        className="relative w-full overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2"
+        style={{
+          aspectRatio: '4/3',
+          borderRadius: '14px',
+          /* drop-shadow = single light source, not a box frame */
+          filter: [
+            'drop-shadow(0 4px 12px rgba(11,15,13,0.18))',
+            'drop-shadow(0 18px 40px rgba(11,15,13,0.22))',
+          ].join(' '),
+        }}
       >
-        {/* Image — always cover, always full */}
+        {/* Image */}
         <img
           src={imgSrc}
           alt={alt}
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 w-full h-full transition-transform duration-700 transform group-hover:scale-110"
+          className="absolute inset-0 w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] transform group-hover:scale-[1.07]"
           style={{
             objectFit: imgFit,
             objectPosition: imgPos,
           }}
         />
 
-        {/* Bottom gradient overlay — depth & polish */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/40 via-transparent to-transparent pointer-events-none" />
-        {/* Side accent gradient */}
+        {/* Rich internal overlays — all depth lives inside the image */}
+        {/* Bottom dark-to-transparent gradient */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-          style={{ background: `linear-gradient(${side === 'left' ? '90deg' : '270deg'}, ${accent}15 0%, transparent 60%)` }}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, rgba(11,15,13,0.60) 0%, rgba(11,15,13,0.10) 40%, transparent 68%)',
+          }}
         />
 
-        {/* Light sweep on hover */}
+        {/* Side directional light from accent color */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-700"
+          style={{
+            background: `linear-gradient(${side === 'left' ? '110deg' : '250deg'}, ${accent}28 0%, transparent 50%)`,
+          }}
+        />
+
+        {/* Top-corner atmospheric glow */}
+        <div
+          className="absolute pointer-events-none opacity-50 group-hover:opacity-80 transition-opacity duration-700"
+          style={{
+            top: 0,
+            [side === 'left' ? 'left' : 'right']: 0,
+            width: '50%',
+            height: '50%',
+            background: `radial-gradient(circle at ${side === 'left' ? '0% 0%' : '100% 0%'}, ${accent}30 0%, transparent 65%)`,
+          }}
+        />
+
+        {/* Light sweep shimmer on hover */}
         {!isReducedMotion && (
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/12 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none z-10" />
         )}
 
-        {/* Decorative corner accents — appear on hover */}
+        {/* Bottom accent glowline on hover */}
         <div
-          className="absolute top-3 left-3 w-10 h-10 opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 pointer-events-none"
-          style={{ borderTop: `2px solid ${accent}`, borderLeft: `2px solid ${accent}`, borderRadius: '6px 0 0 0' }}
-        />
-        <div
-          className="absolute bottom-3 right-3 w-10 h-10 opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 pointer-events-none"
-          style={{ borderBottom: `2px solid ${accent}`, borderRight: `2px solid ${accent}`, borderRadius: '0 0 6px 0' }}
+          className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-all duration-500 z-20"
+          style={{ background: `linear-gradient(90deg, transparent 5%, ${accent} 35%, ${accent} 65%, transparent 95%)` }}
         />
       </div>
 
-      {/* Floating badge */}
+      {/* Floating badge — frosted pill */}
       {badge && (
         <motion.div
-          className="absolute -top-3 lg:-top-4 left-4 lg:left-8 z-30 bg-white border border-[#DDE4DF] shadow-lg rounded-full px-4 py-1.5 flex items-center gap-2"
+          className="absolute -top-4 left-5 lg:left-6 z-30 flex items-center gap-2 px-4 py-2 text-xs font-bold text-[#0B0F0D] whitespace-nowrap"
+          style={{
+            background: 'rgba(255,255,255,0.92)',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            borderRadius: '100px',
+            boxShadow: `0 4px 20px rgba(11,15,13,0.14), 0 0 0 1px rgba(255,255,255,0.6)`,
+          }}
           initial={isReducedMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
           whileInView={isReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          style={{ boxShadow: `0 4px 16px ${accent}25` }}
         >
-          <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: accent }} />
-          <span className="text-xs font-bold text-[#0B0F0D] whitespace-nowrap">{badge}</span>
+          <div
+            className="w-2 h-2 rounded-full animate-pulse flex-shrink-0"
+            style={{ backgroundColor: accent, boxShadow: `0 0 6px ${accent}` }}
+          />
+          {badge}
         </motion.div>
       )}
 
-      {/* Floating icon */}
+      {/* Floating icon pill */}
       {icon && (
         <motion.div
-          className="absolute -bottom-4 lg:-bottom-6 right-6 lg:right-10 z-30 w-12 h-12 lg:w-14 lg:h-14 bg-white border border-[#DDE4DF] shadow-xl rounded-2xl flex items-center justify-center"
-          initial={isReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
+          className="absolute -bottom-5 right-5 lg:right-6 z-30 flex items-center justify-center w-13 h-13"
+          style={{
+            width: '52px',
+            height: '52px',
+            background: 'rgba(255,255,255,0.94)',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            borderRadius: '14px',
+            boxShadow: `0 8px 28px rgba(11,15,13,0.16), 0 0 0 1px rgba(255,255,255,0.7)`,
+          }}
+          initial={isReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.75 }}
           whileInView={isReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 20 }}
-          whileHover={isReducedMotion ? {} : { y: -3, rotate: 4 }}
-          style={{ boxShadow: `0 8px 24px ${accent}30` }}
+          transition={{ delay: 0.4, type: 'spring', stiffness: 280, damping: 18 }}
+          whileHover={isReducedMotion ? {} : { y: -4, rotate: 6, scale: 1.08 }}
         >
-          <div style={{ color: accent }} className="w-6 h-6 lg:w-7 lg:h-7">
+          <div style={{ color: accent }} className="w-6 h-6">
             {icon}
           </div>
         </motion.div>

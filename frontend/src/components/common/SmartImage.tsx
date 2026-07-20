@@ -14,6 +14,8 @@ interface SmartImageProps {
   scale?: number;
   recommendedSize?: string;
   recommendedRatio?: string;
+  /** เปิด depth shadow + hover animation สำหรับรูปภาพแบบ standalone */
+  withDepth?: boolean;
 }
 
 export default function SmartImage({
@@ -27,10 +29,10 @@ export default function SmartImage({
   scale,
   recommendedSize,
   recommendedRatio,
+  withDepth = false,
 }: SmartImageProps) {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showDevLabel, setShowDevLabel] = useState(true);
 
   // Extract config if src is an object
   const imgSrc = typeof src === 'string' ? src : src.src;
@@ -45,14 +47,12 @@ export default function SmartImage({
     setIsLoaded(false);
   }, [imgSrc]);
 
-  // Production fallback: subtle gray box
-  // Dev fallback: shows exact path and recommended size
   const isDev = import.meta.env.DEV;
 
   if (hasError) {
     return (
-      <div 
-        className={`flex flex-col items-center justify-center bg-[#F3F6F4] border-2 border-dashed border-[#DDE4DF] rounded-xl overflow-hidden ${className}`}
+      <div
+        className={`flex flex-col items-center justify-center bg-[#F3F6F4] overflow-hidden ${className}`}
         style={{ aspectRatio: imgAspectRatio }}
         role="img"
         aria-label={`Placeholder for ${alt}`}
@@ -76,6 +76,47 @@ export default function SmartImage({
     );
   }
 
+  if (withDepth) {
+    return (
+      <div
+        className={`relative group overflow-hidden ${className}`}
+        style={{ aspectRatio: imgAspectRatio }}
+      >
+        {/* Ambient glow layer */}
+        <div
+          className="absolute -inset-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 60%, rgba(25,185,101,0.22) 0%, transparent 70%)',
+            filter: 'blur(20px)',
+          }}
+          aria-hidden="true"
+        />
+        {/* Image — no border, full bleed */}
+        <img
+          src={imgSrc}
+          alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding={priority ? 'sync' : 'async'}
+          className={`relative z-10 w-full h-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{
+            objectFit: imgFit,
+            objectPosition: imgPos,
+            transform: imgScale !== 1 && !isLoaded ? `scale(${imgScale})` : undefined,
+            transformOrigin: 'center',
+            boxShadow: '0 20px 60px rgba(11,15,13,0.18), 0 4px 16px rgba(11,15,13,0.10)',
+            filter: 'drop-shadow(0 8px 24px rgba(11,15,13,0.15))',
+          }}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setHasError(true)}
+        />
+        {/* Bottom depth gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/30 via-transparent to-transparent opacity-60 pointer-events-none z-20" />
+        {/* Hover shimmer */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none z-30" />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative overflow-hidden bg-[#F3F6F4] ${className}`} style={{ aspectRatio: imgAspectRatio }}>
       <img
@@ -84,11 +125,11 @@ export default function SmartImage({
         loading={priority ? 'eager' : 'lazy'}
         decoding={priority ? 'sync' : 'async'}
         className={`w-full h-full transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-        style={{ 
-          objectFit: imgFit, 
+        style={{
+          objectFit: imgFit,
           objectPosition: imgPos,
           transform: imgScale !== 1 ? `scale(${imgScale})` : undefined,
-          transformOrigin: 'center'
+          transformOrigin: 'center',
         }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}

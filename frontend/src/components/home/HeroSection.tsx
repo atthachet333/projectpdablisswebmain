@@ -157,23 +157,33 @@ export default function HeroSection() {
                 aria-hidden="true"
               />
 
-              {/* Image Frame — auto height to show full image */}
+              {/* Image — full bleed, rounded, directional drop-shadow (no card frame) */}
               <motion.div
-                className="relative z-10 w-full h-auto rounded-[28px] overflow-hidden drop-shadow-[0_24px_72px_rgba(11,15,13,0.14)] group"
-                initial={{ clipPath: 'inset(8% 8% 8% 8% rounded 28px)' }}
-                animate={{ clipPath: 'inset(0% 0% 0% 0% rounded 28px)' }}
+                className="relative z-10 w-full h-auto overflow-hidden group"
+                initial={{ clipPath: 'inset(8% 8% 8% 8% round 16px)' }}
+                animate={{ clipPath: 'inset(0% 0% 0% 0% round 16px)' }}
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  borderRadius: '16px',
+                  filter: [
+                    'drop-shadow(0 4px 12px rgba(11,15,13,0.16))',
+                    'drop-shadow(0 20px 52px rgba(11,15,13,0.22))',
+                  ].join(' '),
+                }}
               >
                 <img
                   src={siteImages.home.hero.src}
                   alt={siteImages.home.hero.labelTh || 'ทีมงาน PDA BLISS SOLUTIONS'}
-                  className="w-full h-auto max-h-[550px] object-cover object-center transition-transform duration-700 transform group-hover:scale-110"
+                  className="w-full h-auto max-h-[550px] object-cover object-center transition-transform duration-700 transform group-hover:scale-[1.06]"
                   loading="eager"
                 />
-                {/* Green tint shimmer on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#19B965]/06 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Cinematic overlays inside — no external frame */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(11,15,13,0.35) 0%, rgba(11,15,13,0.04) 40%, transparent 65%)' }} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.14) 0%, transparent 55%)' }} />
                 {/* Light sweep */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none z-10" />
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 35%, #19B965 65%, transparent 95%)' }} />
               </motion.div>
 
               {/* Floating Glass Card — Clients */}

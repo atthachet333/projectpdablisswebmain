@@ -81,16 +81,28 @@ export default function AboutPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="relative rounded-[32px] overflow-hidden shadow-[0_32px_80px_rgba(11,15,13,0.12)] border-[8px] border-white bg-white group-hover:shadow-[0_40px_100px_rgba(25,185,101,0.15)] transition-all duration-700">
+              <div
+                className="relative overflow-hidden transition-all duration-700 group-hover:-translate-y-2"
+                style={{
+                  borderRadius: '16px',
+                  filter: [
+                    'drop-shadow(0 4px 12px rgba(11,15,13,0.16))',
+                    'drop-shadow(0 20px 56px rgba(11,15,13,0.24))',
+                  ].join(' '),
+                }}
+              >
                 <SmartImage
                   src={siteImages.about.hero}
                   alt="Team"
-                  className="w-full aspect-[4/3] md:aspect-[16/10] object-cover transform transition-transform duration-[15s] group-hover:scale-[1.05]"
+                  className="w-full aspect-[4/3] md:aspect-[16/10] object-cover transform transition-transform duration-[1500ms] group-hover:scale-[1.05]"
                   priority={true}
                   recommendedRatio="16:10"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/40 via-transparent to-transparent opacity-80 pointer-events-none" />
+                {/* Internal overlays — no external border */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(11,15,13,0.45) 0%, rgba(11,15,13,0.05) 40%, transparent 65%)' }} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.16) 0%, transparent 55%)' }} />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 35%, #19B965 65%, transparent 95%)' }} />
               </div>
               
               {/* Premium Floating Experience Badge (Light Glass) */}
@@ -279,20 +291,25 @@ export default function AboutPage() {
               return (
                 <motion.div
                   key={i}
-                  className="group overflow-hidden bg-white shadow-[0_12px_40px_rgba(11,15,13,0.06)] hover:shadow-[0_24px_60px_rgba(25,185,101,0.12)] transition-shadow duration-500 flex flex-col border border-[#E7EBE8] hover:border-[#19B965]/30"
+                  className="group overflow-hidden bg-white shadow-[0_12px_40px_rgba(11,15,13,0.08)] hover:shadow-[0_28px_64px_rgba(25,185,101,0.14)] transition-all duration-500 flex flex-col hover:-translate-y-1"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="aspect-[4/5] overflow-hidden relative">
+                  <div
+                    className="aspect-[4/5] overflow-hidden relative"
+                    style={{ borderRadius: '0' }}
+                  >
                     <SmartImage 
                       src={portrait} 
                       alt={member.name}
                       className="w-full h-full object-cover object-center transition-transform duration-700 transform group-hover:scale-110"
                       recommendedRatio="4:5"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/45 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    {/* Bottom accent line on hover */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, transparent, #19B965, transparent)' }} />
                     
                     <div className="absolute bottom-4 left-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                       <a href="#" className="w-12 h-12 rounded-full bg-white border border-white flex items-center justify-center text-[#0E8F4D] hover:bg-[#19B965] hover:text-white hover:border-[#19B965] transition-colors shadow-[0_4px_15px_rgba(0,0,0,0.1)]">

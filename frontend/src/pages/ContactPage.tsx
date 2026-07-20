@@ -34,6 +34,65 @@ const Confetti = () => {
   );
 };
 
+function LocationMap() {
+  const [hasImage, setHasImage] = useState<boolean | null>(null);
+  const { t } = useTranslation();
+
+  return (
+    <div className="rounded-xl overflow-hidden border-none bg-transparent flex-1 min-h-[260px] relative z-10 group/map">
+      {/* Always show this layer — it reveals when image loads or stays as placeholder */}
+      {hasImage !== true && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
+          {/* Pulse Marker */}
+          <div className="relative mb-4">
+            <div className="w-14 h-14 rounded-full bg-[#19B965]/15 flex items-center justify-center border border-[#19B965]/30 group-hover/map:bg-[#19B965]/25 transition-colors">
+              <MapPin className="w-7 h-7 text-[#19B965]" aria-hidden="true" />
+            </div>
+            <div className="absolute inset-0 rounded-full border border-[#19B965]/30 animate-ping opacity-40" aria-hidden="true" />
+          </div>
+          <p className="text-sm font-extrabold text-white mb-1">{COMPANY_INFO.nameFull}</p>
+          <p className="text-xs text-white/70 font-medium leading-relaxed mb-3">{COMPANY_INFO.address}</p>
+          <p className="text-[10px] text-white/40 leading-relaxed">{t('pricing.mapPlaceholder', 'วางรูปแผนที่ที่ public/location-map.png')}</p>
+          {import.meta.env.VITE_GOOGLE_MAPS_URL && (
+            <a
+              href={import.meta.env.VITE_GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#19B965] border border-[#19B965]/40 px-3 py-1.5 rounded-lg hover:bg-[#19B965] hover:text-[#0B0F0D] transition-all"
+              aria-label={t('pricing.openMap', 'เปิดแผนที่')}
+            >
+              <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
+              {t('pricing.openMap', 'เปิดแผนที่')}
+            </a>
+          )}
+        </div>
+      )}
+      {/* Image layer */}
+      <img
+        src="/location-map.png"
+        alt={t('contact.mapAlt', 'แผนที่สำนักงาน บริษัท พีดีเอ บลิส จำกัด')}
+        className={`w-full h-full object-cover object-center absolute inset-0 transition-all duration-500 group-hover/map:scale-[1.02] ${
+          hasImage ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        style={{ minHeight: '260px' }}
+        onLoad={() => setHasImage(true)}
+        onError={() => setHasImage(false)}
+      />
+      {/* Gradient overlay when image shown */}
+      {hasImage && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10 pointer-events-none" />
+      )}
+      {/* Pin marker overlay when image is loaded */}
+      {hasImage && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[#064E2B]/90 backdrop-blur-sm px-3 py-2 rounded-full z-20 shadow-lg">
+          <div className="w-2 h-2 rounded-full bg-[#19B965] animate-pulse" aria-hidden="true" />
+          <span className="text-white text-xs font-bold whitespace-nowrap">{COMPANY_INFO.nameFull}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ContactPage() {
   const { t } = useTranslation();
   const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -76,7 +135,10 @@ export default function ContactPage() {
     setSubmitState('loading');
     setErrorMessage('');
     try {
-      const res = await apiService.submitContact(data);
+      const [res] = await Promise.all([
+        apiService.submitContact(data),
+        new Promise(resolve => setTimeout(resolve, 1500))
+      ]);
       if (res.success) {
         setSubmitState('success');
         reset();
@@ -493,26 +555,8 @@ export default function ContactPage() {
                   })}
                 </div>
 
-                {/* Large Map Block */}
-                <div className="rounded-xl overflow-hidden border border-white/20 bg-white/5 flex-1 min-h-[250px] flex items-center justify-center relative z-10 group/map" role="img" aria-label="แผนที่สำนักงาน PDA BLISS">
-                  {import.meta.env.VITE_GOOGLE_MAPS_URL ? (
-                    <iframe
-                      src={import.meta.env.VITE_GOOGLE_MAPS_URL}
-                      className="w-full h-full grayscale group-hover/map:grayscale-0 transition-all duration-700"
-                      loading="lazy"
-                      title="แผนที่สำนักงาน PDA BLISS"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  ) : (
-                    <div className="text-center p-6">
-                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-3 group-hover/map:bg-[#19B965] transition-colors">
-                        <MapPin className="w-6 h-6 text-[#19B965] group-hover/map:text-[#0B0F0D]" aria-hidden="true" />
-                      </div>
-                      <p className="text-sm font-extrabold mb-1">{COMPANY_INFO.nameFull}</p>
-                      <p className="text-xs text-white/70 font-medium leading-relaxed">{COMPANY_INFO.address}</p>
-                    </div>
-                  )}
-                </div>
+                {/* Location Map — uses /location-map.png with graceful fallback */}
+                <LocationMap />
               </div>
             </div>
             

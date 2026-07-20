@@ -3,6 +3,8 @@ import { ArrowRight, FileText, Users, TrendingUp, CheckCircle2 } from 'lucide-re
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SectionDivider from '../common/SectionDivider';
+import ServiceImageFrame from '../common/ServiceImageFrame';
+import { siteImages } from '../../config/images';
 
 export default function ServicesSection() {
   const { t } = useTranslation();
@@ -20,7 +22,7 @@ export default function ServicesSection() {
       badgeBg: 'bg-[#EAF8EF] border border-[#9EE6BC]',
       badgeIcon: 'text-[#0E8F4D]',
       checkIcon: 'text-[#0E8F4D]',
-      img: 'https://images.unsplash.com/photo-1554774853-719586f82d77?w=1000&q=80&auto=format&fit=crop',
+      img: siteImages.home.serviceDocuments,
     },
     {
       id: 'membership',
@@ -34,7 +36,7 @@ export default function ServicesSection() {
       badgeBg: 'bg-white border border-[#E7EBE8]',
       badgeIcon: 'text-[#0B0F0D]',
       checkIcon: 'text-[#3F4742]',
-      img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1000&q=80&auto=format&fit=crop',
+      img: siteImages.home.serviceMembership,
     },
     {
       id: 'consulting',
@@ -48,7 +50,7 @@ export default function ServicesSection() {
       badgeBg: 'bg-white border border-[#9EE6BC]',
       badgeIcon: 'text-[#064E2B]',
       checkIcon: 'text-[#08743C]',
-      img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&q=80&auto=format&fit=crop',
+      img: siteImages.home.serviceConsulting,
     },
   ];
 
@@ -73,14 +75,14 @@ export default function ServicesSection() {
             return (
               <motion.div
                 key={service.id}
-                className={`group flex flex-col lg:flex-row ${service.cardClass}`}
+                className={`group flex flex-col lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-8 lg:gap-16 items-center rounded-2xl overflow-hidden p-6 lg:p-12 ${service.cardClass}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Content Side */}
-                <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative z-10">
+                <div className={`flex flex-col justify-center relative z-10 order-1 ${index % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                   <div className="flex items-center gap-4 mb-6">
                     <span className={`text-sm font-num font-bold tracking-widest ${service.textClass} opacity-50`}>
                       0{index + 1}
@@ -121,16 +123,13 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Image Side */}
-                <div className="w-full lg:w-5/12 xl:w-1/2 min-h-[300px] lg:min-h-full relative overflow-hidden bg-[#E7EBE8]">
-                  {/* Overlay Gradient for color depth */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10 mix-blend-multiply" />
-                  <img 
+                <div className={`w-full relative z-10 order-2 ${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <ServiceImageFrame 
                     src={service.img} 
                     alt={t(`services.items.${service.key}.title`)}
-                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[10s] group-hover:scale-105 image-animate"
-                    loading="lazy"
+                    side={index % 2 !== 0 ? 'left' : 'right'}
+                    className="max-w-[500px] lg:max-w-[580px] h-[360px] lg:h-[440px]"
                   />
-                  <div className="absolute inset-0 border border-black/5 z-20 pointer-events-none" />
                 </div>
               </motion.div>
             );

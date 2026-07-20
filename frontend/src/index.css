@@ -339,3 +339,151 @@
   }
   .marquee-track { flex-wrap: wrap; justify-content: center; }
 }
+
+/* =============================================
+   Section Decorations & Visual Hierarchy
+   ============================================= */
+
+/* Dot grid background pattern */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, #CBD5C0 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Section top glow divider */
+.section-top-glow {
+  position: relative;
+}
+.section-top-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #0E8F4D, transparent);
+  opacity: 0.4;
+}
+
+/* Pricing card tooltip */
+.pricing-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pricing-tooltip .tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0B0F0D;
+  color: white;
+  border: 1px solid #19B965;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: nowrap;
+  max-width: 220px;
+  white-space: normal;
+  text-align: center;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.pricing-tooltip .tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #19B965;
+}
+
+.pricing-tooltip:hover .tooltip-content,
+.pricing-tooltip:focus-within .tooltip-content {
+  opacity: 1;
+}
+
+/* Animated comparison table */
+.comparison-row {
+  transition: background-color 0.2s ease;
+}
+.comparison-row:hover {
+  background-color: rgba(234, 248, 239, 0.4);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 9999;
+  background: #064E2B;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Package card hover lift */
+@media (prefers-reduced-motion: no-preference) {
+  .pricing-card-hover {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  }
+  .pricing-card-hover:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* Animated light sweep on footer top border */
+@keyframes lightBorder {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes light-border-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+.animate-light-border {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Comparison strip mobile scroll */
+.comparison-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #0E8F4D #F3F6F4;
+}
+
+.comparison-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.comparison-scroll::-webkit-scrollbar-track {
+  background: #F3F6F4;
+}
+.comparison-scroll::-webkit-scrollbar-thumb {
+  background: #0E8F4D;
+  border-radius: 2px;
+}

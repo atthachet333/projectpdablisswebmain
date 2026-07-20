@@ -55,7 +55,7 @@ export default function FloatingContact() {
   return (
     <>
       {/* Floating Contact Menu */}
-      <div className="fixed bottom-6 right-4 sm:right-6 z-[60] flex flex-col items-end gap-3">
+      <div className="fixed bottom-6 right-4 sm:right-6 z-[80] flex flex-col items-end gap-3">
         {/* Action Items */}
         <AnimatePresence>
           {open && (
@@ -154,7 +154,7 @@ export default function FloatingContact() {
       <AnimatePresence>
         {scrolled && (
           <motion.button
-            className="fixed bottom-28 right-5 sm:right-7 z-50 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm border border-white/60 shadow-floating flex items-center justify-center text-navy-900 hover:bg-primary-50 hover:text-primary-700 transition-colors"
+            className="fixed bottom-28 right-5 sm:right-7 z-[75] w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm border border-white/60 shadow-floating flex items-center justify-center text-navy-900 hover:bg-primary-50 hover:text-primary-700 transition-colors"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}

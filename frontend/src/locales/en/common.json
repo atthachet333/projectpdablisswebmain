@@ -340,7 +340,223 @@
         "q": "Who will be handling my account?",
         "a": "You will be assigned a dedicated account manager based on your tier. Professional and Enterprise tiers get senior specialists tailored to their industry."
       }
-    ]
+    ],
+    "positioning": {
+      "starter": "For small businesses needing basic care and support",
+      "pro": "For businesses with ongoing tasks that need a dedicated tracking team",
+      "enterprise": "For organizations with multiple departments, branches, or complex operations"
+    },
+    "summary": {
+      "starter": "Focused on Q&A, basic tracking, and important updates",
+      "pro": "Adds in-depth tracking, consultation, and continuous operational planning",
+      "enterprise": "Custom service, dedicated manager, reports, and multi-party coordination"
+    },
+    "highlight": {
+      "starter": "Essential care at an accessible price point",
+      "pro": "The right balance of price, tracking depth, and consultation",
+      "enterprise": "Comprehensive, fully tailored to your organization"
+    },
+    "badge": {
+      "starter": "Great for Beginners",
+      "pro": "Most Popular",
+      "enterprise": "Most Complete"
+    },
+    "suitableFor": {
+      "starter": [
+        "Small business owners",
+        "Companies new to our services",
+        "Simple documentation needs",
+        "Low to moderate case volume"
+      ],
+      "pro": [
+        "Growing SMEs",
+        "Businesses with monthly ongoing tasks",
+        "Need a dedicated tracking person",
+        "Need periodic expert consultation"
+      ],
+      "enterprise": [
+        "Factories & large organizations",
+        "Multi-branch businesses",
+        "Companies with multiple departments",
+        "Multi-party coordination required",
+        "Need executive-level reporting"
+      ]
+    },
+    "notIncluded": {
+      "starter": [
+        "Organization-specific customization",
+        "Executive reports",
+        "Dedicated account manager",
+        "Urgent rush requests"
+      ],
+      "pro": [
+        "Dedicated Account Manager",
+        "Advanced specialized reports",
+        "Full multi-branch management"
+      ],
+      "enterprise": [
+        "External agency fees",
+        "Government fees & taxes",
+        "Out-of-scope contract work"
+      ]
+    },
+    "featureGroups": {
+      "contact": "Contact & Response",
+      "tracking": "Task Tracking",
+      "consultation": "Consultation",
+      "planning": "Planning",
+      "reports": "Reports & Summaries",
+      "manager": "Dedicated Manager"
+    },
+    "featureDetails": {
+      "starter": {
+        "contact": ["Standard channels", "Response within 2 business days"],
+        "tracking": ["Basic task tracking", "Key status updates"],
+        "consultation": ["Basic consultation, 1 session/month"],
+        "planning": ["Not included"],
+        "reports": ["Not included"],
+        "manager": ["Not included"]
+      },
+      "pro": {
+        "contact": ["Priority channels", "Response within 1 business day"],
+        "tracking": ["In-depth task tracking", "Key deadline alerts", "Monthly status summary"],
+        "consultation": ["3 consultation sessions/month"],
+        "planning": ["Assistance with document & operational planning"],
+        "reports": ["Monthly summary report"],
+        "manager": ["Shared care team"]
+      },
+      "enterprise": {
+        "contact": ["Dedicated fast-track channel", "Response within 4–8 business hours"],
+        "tracking": ["Multi-project tracking", "Multi-department", "Multi-branch"],
+        "consultation": ["Per agreed scope"],
+        "planning": ["Monthly and quarterly planning"],
+        "reports": ["Executive reports", "Risk summaries", "Recommendations"],
+        "manager": ["Dedicated Account Manager"]
+      }
+    },
+    "quickDifferences": {
+      "title": "Quick Differences",
+      "subtitle": "At a glance",
+      "responseTime": "Response Time",
+      "consultations": "Consultations",
+      "tracking": "Tracking",
+      "reports": "Reports",
+      "dedicatedManager": "Dedicated Manager"
+    },
+    "comparison": {
+      "title": "Package Comparison",
+      "subtitle": "Compare features across all packages",
+      "featureHeader": "Feature",
+      "starterHeader": "Starter",
+      "proHeader": "Professional",
+      "enterpriseHeader": "Enterprise",
+      "rows": [
+        {
+          "label": "Response Time",
+          "starter": "Within 2 business days",
+          "pro": "Within 1 business day",
+          "enterprise": "Within 4–8 business hours"
+        },
+        {
+          "label": "Consultation Sessions",
+          "starter": "1 session per month",
+          "pro": "3 sessions per month",
+          "enterprise": "Per agreed scope"
+        },
+        {
+          "label": "Tracking Level",
+          "starter": "Basic task tracking",
+          "pro": "In-depth task tracking",
+          "enterprise": "Multi-project & multi-dept tracking"
+        },
+        {
+          "label": "Reports",
+          "starter": "No regular reports",
+          "pro": "Monthly summary report",
+          "enterprise": "Executive & risk summary reports"
+        },
+        {
+          "label": "Dedicated Manager",
+          "starter": "None",
+          "pro": "Shared care team",
+          "enterprise": "Dedicated account manager"
+        },
+        {
+          "label": "Planning Assistance",
+          "starter": "Not included",
+          "pro": "Monthly planning support",
+          "enterprise": "Monthly & quarterly planning"
+        },
+        {
+          "label": "Multi-Branch Support",
+          "starter": "Not included",
+          "pro": "Supported in some cases",
+          "enterprise": "Full multi-branch support"
+        },
+        {
+          "label": "Contact Channels",
+          "starter": "Standard channels",
+          "pro": "Priority channels",
+          "enterprise": "Dedicated fast-track channel"
+        }
+      ]
+    },
+    "ctaSection": {
+      "eyebrow": "Free Recommendation",
+      "title": "Not sure which plan fits your business?",
+      "desc": "Our team can help assess based on your workload, tracking frequency, number of coordinators, and operational complexity to recommend the right plan without pressure.",
+      "btn1": "Get Plan Recommendation",
+      "btn2": "Compare in Detail",
+      "trust": [
+        "No assessment fees",
+        "Clear terms before service begins",
+        "Switch plans anytime",
+        "No sales pressure"
+      ]
+    },
+    "tooltips": {
+      "responseTime": "Average response time during business days and hours, excluding public holidays",
+      "manager": "Your primary point of contact directly responsible for your account, reachable throughout business hours",
+      "reports": "Summarized performance reports, upcoming deadlines, and tailored recommendations for your business",
+      "urgent": "Rush requests outside normal business hours. Must be notified in advance and subject to plan conditions",
+      "consultation": "Direct discussion or advice session with an expert via phone, video, or meeting",
+      "multiBranch": "Tracking and coordination services for businesses with multiple branches or departments"
+    },
+    "businessTypes": {
+      "title": "Choose Based on Your Business Type",
+      "subtitle": "Each package is designed for different business sizes and needs.",
+      "starter": {
+        "label": "Early-Stage Business",
+        "points": [
+          "Tasks are not yet complex",
+          "Few coordinators involved",
+          "Need basic guidance"
+        ],
+        "recommend": "Recommended: Starter Plan"
+      },
+      "pro": {
+        "label": "Growing Business",
+        "points": [
+          "Ongoing monthly tasks",
+          "Multiple items to track",
+          "Need expert consultation"
+        ],
+        "recommend": "Recommended: Professional Plan"
+      },
+      "enterprise": {
+        "label": "Organization & Factory",
+        "points": [
+          "Multiple departments or branches",
+          "Need executive reports",
+          "Need a dedicated manager"
+        ],
+        "recommend": "Recommended: Enterprise Plan"
+      }
+    },
+    "mapPlaceholder": "Place your map image at public/location-map.png",
+    "openMap": "Open Map",
+    "getDirections": "Get Directions",
+    "officeHoursLabel": "Business Hours"
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -362,6 +578,21 @@
         "a": "You can cancel by giving a 30-day notice via phone or email. There are no cancellation fees."
       }
     ]
+  },
+  "footer": {
+    "ctaTitle": "Ready to elevate your business management?",
+    "ctaDesc": "Talk to our team to assess your needs and find the service package that fits your business.",
+    "ctaBtn1": "Request Consultation",
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contact": "Contact Us",
+    "rights": "All rights reserved.",
+    "companyDesc": "Provider of migrant worker document management, business membership services, and administrative consulting.",
+    "registration": "Company Registration No: XXXXXXXXXXXXX",
+    "officeHours": "Mon\u2013Fri 09:00\u201318:00",
+    "responseTime": "Response within 1 business day",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "cta": {
     "title": "Ready to Get Started?",

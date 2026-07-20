@@ -1,5 +1,6 @@
+
 import { Link } from 'react-router-dom';
-import { Phone, Mail, Globe, MapPin, Facebook, Linkedin, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Linkedin, ArrowRight, Clock } from 'lucide-react';
 import { COMPANY_INFO, NAV_ITEMS } from '../../data/company';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +10,8 @@ const LineIcon = () => (
   </svg>
 );
 
+import BrandLogo from '../common/BrandLogo';
+
 export default function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
@@ -17,16 +20,17 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#090D0B] text-white relative overflow-hidden" role="contentinfo">
-      
+
       {/* Background Details */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20" aria-hidden="true">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#232A26_1px,transparent_1px),linear-gradient(to_bottom,#232A26_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#232A26_1px,transparent_1px),linear-gradient(to_bottom,#232A26_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.06]" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0E8F4D] rounded-full blur-[120px] opacity-20" />
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#064E2B] rounded-full blur-[80px] opacity-10" />
       </div>
 
       {/* Top CTA Strip */}
-      <div className="relative z-10 bg-gradient-to-r from-[#0B0F0D] to-[#064E2B] border-b border-[#263029] overflow-hidden group">
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#19B965] to-transparent animate-light-border opacity-50" />
+      <div className="relative z-10 bg-gradient-to-r from-[#0B0F0D] to-[#064E2B] border-b border-[#263029] overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#19B965] to-transparent opacity-50" />
         <div className="container-custom py-12 md:py-16 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="text-center lg:text-left">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
@@ -39,7 +43,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#19B965] text-[#0B0F0D] font-bold rounded-xl hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-glow-green group/btn overflow-hidden relative"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#19B965] text-[#0B0F0D] font-bold rounded-xl hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_20px_rgba(25,185,101,0.3)] group/btn overflow-hidden relative"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
               <span className="relative z-10">{t('footer.ctaBtn1', 'ขอรับคำปรึกษา')}</span>
@@ -52,22 +56,22 @@ export default function Footer() {
       <div className="container-custom relative z-10">
         {/* Main Footer Content */}
         <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
-          
+
           {/* Column 1: Logo & About (spans 4) */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-6">
+            {/* Logo + company names */}
             <div className="flex items-center gap-4 group cursor-pointer">
-              <svg width="48" height="48" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(25,185,101,0.2)]">
-                <circle cx="26" cy="26" r="25" stroke="#19B965" strokeWidth="2"/>
-                <circle cx="26" cy="26" r="22" fill="#19B965" fillOpacity="0.05"/>
-                <text x="26" y="22" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="800" fontFamily="serif">PDA</text>
-                <line x1="12" y1="26" x2="40" y2="26" stroke="#19B965" strokeWidth="1"/>
-                <text x="26" y="34" textAnchor="middle" fill="#FFFFFF" fontSize="5.5" fontWeight="600" fontFamily="sans-serif">BLISS</text>
-              </svg>
-              <div>
-                <p className="font-bold text-white text-base tracking-wide">PDA BLISS COMPANY LIMITED</p>
+              <BrandLogo size={68} />
+              <div className="flex flex-col min-w-0">
+                <span className="text-white font-bold text-[15px] leading-snug tracking-wide">
+                  บริษัท พีดีเอ บลิส จำกัด
+                </span>
+                <span className="text-[#9EE6BC] text-xs font-medium tracking-widest uppercase leading-snug mt-0.5">
+                  PDA BLISS COMPANY LIMITED
+                </span>
               </div>
             </div>
-            
+
             <p className="text-[#A8B0AA] text-sm leading-relaxed max-w-sm">
               {t('footer.companyDesc', 'ผู้ให้บริการด้านการจัดการเอกสารแรงงานต่างด้าว บริการสมาชิกสำหรับธุรกิจ และคำปรึกษาด้านการบริหาร บัญชี อุตสาหกรรม และการเงิน')}
             </p>
@@ -82,7 +86,7 @@ export default function Footer() {
                 href={COMPANY_INFO.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#111713] border border-[#263029] hover:border-[#19B965] hover:bg-[#064E2B] flex items-center justify-center text-white hover:text-white hover:-translate-y-1 hover:shadow-glow-green transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-[#111713] border border-[#263029] hover:border-[#19B965] hover:bg-[#064E2B] flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(25,185,101,0.2)] transition-all duration-300"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" aria-hidden="true" />
@@ -91,7 +95,7 @@ export default function Footer() {
                 href={COMPANY_INFO.social.line}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#111713] border border-[#263029] hover:border-[#19B965] hover:bg-[#064E2B] flex items-center justify-center text-white hover:text-white hover:-translate-y-1 hover:shadow-glow-green transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-[#111713] border border-[#263029] hover:border-[#19B965] hover:bg-[#064E2B] flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(25,185,101,0.2)] transition-all duration-300"
                 aria-label="LINE OA"
               >
                 <LineIcon />
@@ -100,7 +104,7 @@ export default function Footer() {
                 href={COMPANY_INFO.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#111713] border border-[#263029] hover:border-[#19B965] hover:bg-[#064E2B] flex items-center justify-center text-white hover:text-white hover:-translate-y-1 hover:shadow-glow-green transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-[#111713] border border-[#263029] hover:border-[#19B965] hover:bg-[#064E2B] flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(25,185,101,0.2)] transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" aria-hidden="true" />
@@ -181,7 +185,10 @@ export default function Footer() {
                 <div className="flex flex-col pt-1">
                   <span className="text-xs text-[#747D77] mb-1">Office</span>
                   <span className="leading-relaxed">{COMPANY_INFO.address}</span>
-                  <span className="text-[#19B965] text-xs mt-2 block">{t('footer.officeHours', 'จันทร์–ศุกร์ 09:00–18:00 น.')}</span>
+                  <span className="flex items-center gap-1.5 text-[#19B965] text-xs mt-2">
+                    <Clock className="w-3 h-3" aria-hidden="true" />
+                    {t('footer.officeHours', 'จันทร์–ศุกร์ 09:00–18:00 น.')}
+                  </span>
                   <span className="text-[#747D77] text-xs mt-0.5 block">{t('footer.responseTime', 'ตอบกลับภายใน 1 วันทำการ')}</span>
                 </div>
               </li>

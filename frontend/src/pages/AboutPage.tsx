@@ -5,15 +5,17 @@ import SectionDivider from '../components/common/SectionDivider';
 import CTASection from '../components/common/CTASection';
 import { useTranslation } from 'react-i18next';
 import { COMPANY_INFO } from '../data/company';
+import SmartImage from '../components/common/SmartImage';
+import { siteImages } from '../config/images';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   integrity: Shield, professionalism: Award, continuousImprovement: TrendingUp, clientCare: Heart, accuracy: Target, mutualGrowth: Sprout,
 };
 
 const teamPortraits = [
-  'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80&auto=format&fit=crop',
+  siteImages.about.teamMember1,
+  siteImages.about.teamMember2,
+  siteImages.about.teamMember3,
 ];
 
 export default function AboutPage() {
@@ -79,7 +81,7 @@ export default function AboutPage() {
     <div className="pt-[72px] lg:pt-[78px]">
       
       {/* 1. Hero / Story Section */}
-      <section className="relative bg-[#FAFCFB] py-20 lg:py-32 overflow-hidden" aria-label={t('nav.about')}>
+      <section className="relative bg-[#FAFCFB] py-20 lg:py-24 overflow-hidden" aria-label={t('nav.about')}>
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F3F6F4] transform -skew-x-12 translate-x-32" />
           <div className="absolute top-10 right-20 w-32 h-32 bg-[#EAF8EF] rounded-full blur-[40px]" />
@@ -116,12 +118,13 @@ export default function AboutPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="aspect-[4/3] md:aspect-[16/10] relative overflow-hidden bg-white border border-[#E7EBE8] rounded-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1200&q=80&auto=format&fit=crop"
+              <div className="aspect-[4/3] md:aspect-[16/10] relative overflow-hidden bg-transparent rounded-2xl">
+                <SmartImage
+                  src={siteImages.about.hero}
                   alt="Team"
                   className="w-full h-full object-cover transform transition-transform duration-[10s] group-hover:scale-105"
-                  loading="eager"
+                  priority={true}
+                  recommendedRatio="16:10"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent mix-blend-multiply" />
               </div>
@@ -137,49 +140,81 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Editorial Layout for Vision / Mission */}
-      <section className="py-24 bg-white relative">
+      <section className="py-20 lg:py-24 bg-[#F9FAFB] relative">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+          <SectionDivider title="Vision & Mission" subtitle="OUR PURPOSE" variant="C" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 mt-16">
             {/* Vision */}
             <motion.div 
-              className="card-white p-10 mouse-spotlight"
+              className="card-white p-10 mouse-spotlight group transition-transform duration-500 hover:-translate-y-1 hover:shadow-floating relative overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Eye className="w-10 h-10 text-[#0E8F4D] mb-6 icon-animate" />
-              <h2 className="text-3xl font-extrabold text-[#0B0F0D] mb-4">Vision</h2>
-              <p className="text-[#3F4742] text-lg leading-relaxed font-medium">
-                "{t('about.vision')}"
-              </p>
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-[#F0FDF4] z-0" />
+              <div className="absolute top-4 right-8 text-[120px] leading-none font-serif text-black opacity-5 pointer-events-none z-0">"</div>
+              <div className="absolute inset-0 z-0 opacity-[0.04] grayscale mix-blend-multiply pointer-events-none bg-cover bg-right-bottom" style={{ backgroundImage: "url('/images/about/vision-bg.jpg')" }} />
+              
+              <div className="relative z-10">
+                <Eye className="w-10 h-10 text-[#0E8F4D] mb-6 icon-animate" />
+                <h2 className="text-3xl font-extrabold text-[#0B0F0D] mb-4">Vision</h2>
+                <p className="text-[#3F4742] text-lg leading-relaxed font-medium">
+                  "{t('about.vision')}"
+                </p>
+              </div>
+              
+              {import.meta.env.DEV && (
+                <div className="absolute bottom-2 right-2 text-[10px] text-gray-400 z-10">
+                  Optional background: /images/about/vision-bg.jpg
+                </div>
+              )}
             </motion.div>
 
             {/* Mission */}
             <motion.div 
-              className="card-dark p-10 mouse-spotlight"
+              className="card-dark p-10 mouse-spotlight group transition-transform duration-500 hover:-translate-y-1 hover:shadow-floating relative overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Crosshair className="w-10 h-10 text-[#19B965] mb-6 icon-animate" />
-              <h2 className="text-3xl font-extrabold mb-4 text-white">Mission</h2>
-              <ul className="space-y-4">
-                {missionItems.map((item, i) => (
-                  <li key={i} className="flex gap-3 text-white/80 text-base leading-relaxed">
-                    <span className="text-[#19B965] font-bold">0{i+1}.</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="absolute inset-0 bg-[radial-gradient(#19B965_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03] pointer-events-none z-0" />
+              <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none bg-cover bg-right-bottom" style={{ backgroundImage: "url('/images/about/mission-bg.jpg')" }} />
+              <div className="absolute -bottom-4 right-4 text-[120px] font-num font-extrabold text-white opacity-5 pointer-events-none z-0">05</div>
+              
+              <div className="relative z-10">
+                <Crosshair className="w-10 h-10 text-[#19B965] mb-6 icon-animate" />
+                <h2 className="text-3xl font-extrabold mb-4 text-white">Mission</h2>
+                <ul className="space-y-4">
+                  {missionItems.map((item, i) => (
+                    <li key={i} className="flex gap-3 text-white/80 text-base leading-relaxed">
+                      <span className="text-[#19B965] font-bold">0{i+1}.</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {import.meta.env.DEV && (
+                <div className="absolute bottom-2 right-2 text-[10px] text-white/30 z-10">
+                  Optional background: /background.png
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* 3. Company Values */}
-      <section className="py-24 bg-[#F3F6F4] relative overflow-hidden">
+      <section className="py-20 lg:py-24 bg-[#FCFDFD] bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#19B965] blur-[120px] opacity-[0.04] pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gray-500 blur-[120px] opacity-[0.04] pointer-events-none" aria-hidden="true" />
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[150px] font-extrabold text-black opacity-[0.02] pointer-events-none rotate-90 origin-right lg:rotate-0 lg:origin-center select-none" aria-hidden="true">
+          VALUES
+        </div>
+        
         <div className="container-custom relative z-10">
           <SectionDivider title="Our Values" subtitle="The core principles we stand by" variant="D" />
           
@@ -189,17 +224,24 @@ export default function AboutPage() {
               return (
                 <motion.div
                   key={key}
-                  className={`p-8 md:p-10 ${valueCardClasses[i]}`}
+                  className={`group relative overflow-hidden p-8 md:p-10 ${valueCardClasses[i]} transition-transform duration-500 hover:-translate-y-1 hover:shadow-floating`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-animate transition-colors duration-500 ${valueIconClasses[i]}`}>
-                    <Icon className="w-6 h-6" />
+                  <div className="absolute top-4 right-4 text-6xl font-num font-extrabold opacity-5 pointer-events-none z-0">
+                    0{i+1}
                   </div>
-                  <h3 className={`text-xl font-extrabold mb-4 ${valueTextClasses[i]}`}>{t(`about.values.items.${key}.title`)}</h3>
-                  <p className={`text-sm leading-relaxed ${valueDescClasses[i]}`}>{t(`about.values.items.${key}.desc`)}</p>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out pointer-events-none z-0" />
+                  
+                  <div className="relative z-10">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-animate transition-colors duration-500 ${valueIconClasses[i]}`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className={`text-xl font-extrabold mb-4 ${valueTextClasses[i]}`}>{t(`about.values.items.${key}.title`)}</h3>
+                    <p className={`text-sm leading-relaxed ${valueDescClasses[i]}`}>{t(`about.values.items.${key}.desc`)}</p>
+                  </div>
                 </motion.div>
               );
             })}
@@ -208,7 +250,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Team Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-20 lg:py-24 bg-[#F3F6F4] relative overflow-hidden">
         <div className="container-custom">
           <SectionDivider title={t('about.team.title')} subtitle={t('about.team.subtitle')} variant="B" number="TEAM" />
           
@@ -219,21 +261,25 @@ export default function AboutPage() {
               return (
                 <motion.div
                   key={i}
-                  className="group rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-floating bg-white border border-[#E7EBE8] hover:border-[#19B965] overflow-hidden"
+                  className="group rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-floating bg-white border border-[#E7EBE8] hover:border-[#19B965] overflow-hidden hover:rotate-[0.5deg]"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="relative overflow-hidden aspect-square bg-[#E7EBE8]">
-                    <img 
+                  <div className="relative overflow-hidden aspect-square bg-transparent group-hover:shadow-[inset_0_0_30px_rgba(25,185,101,0.2)] transition-shadow duration-500">
+                    <SmartImage 
                       src={portrait} 
                       alt={member.name}
-                      className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
-                      loading="lazy"
+                      className="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-[1.02]"
+                      recommendedRatio="1:1"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
+                    <div className="absolute bottom-4 right-4 bg-[#0E8F4D] text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 z-10">
+                      10+ ปี
+                    </div>
+
                     <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                       <a href="#" className="w-10 h-10 rounded-full bg-[#19B965] flex items-center justify-center text-[#0B0F0D] hover:bg-white transition-colors shadow-glow-green">
                         <Linkedin className="w-5 h-5" />
@@ -256,7 +302,7 @@ export default function AboutPage() {
       </section>
 
       {/* 5. Premium Timeline */}
-      <section className="py-24 bg-[#FAFCFB]">
+      <section className="py-20 lg:py-24 bg-white">
         <div className="container-custom">
           <SectionDivider title={t('about.timeline.title')} subtitle="OUR JOURNEY" variant="A" />
           
@@ -312,6 +358,46 @@ export default function AboutPage() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* 6. Trust Proof Section */}
+      <section className="py-20 lg:py-24 bg-[#0B0F0D]">
+        <div className="container-custom">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+            {([
+              { icon: '10+', label: t('about.trust.badges.experience', 'ประสบการณ์กว่า 10 ปี') },
+              { icon: '1,000+', label: t('about.trust.badges.clients', 'ลูกค้ากว่า 1,000 ราย') },
+              { icon: '100%', label: t('about.trust.badges.secure', 'ข้อมูลปลอดภัย 100%') },
+              { icon: '24h', label: t('about.trust.badges.fast', 'ตอบกลับรวดเร็ว') },
+            ] as const).map((item, i) => (
+              <motion.div
+                key={i}
+                className="text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#19B965]/40 transition-all duration-300 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <p className="text-3xl font-extrabold text-[#19B965] mb-2 group-hover:text-[#9EE6BC] transition-colors">{item.icon}</p>
+                <p className="text-white/80 text-sm font-semibold leading-tight">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-white/60 text-base leading-relaxed max-w-2xl mx-auto">
+              {t('about.previewText')}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mt-6">
+              {(t('about.bullets', { returnObjects: true }) as string[]).map((bullet: string, bi: number) => (
+                <span key={bi} className="flex items-center gap-2 text-sm text-white/70 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#19B965] flex-shrink-0" aria-hidden="true" />
+                  {bullet}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

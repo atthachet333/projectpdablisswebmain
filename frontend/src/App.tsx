@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import FloatingContact from './components/layout/FloatingContact';
 import ScrollProgress from './components/layout/ScrollProgress';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -15,6 +16,9 @@ const PricingPage = lazy(() => import('./pages/PricingPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
+
+// Dev tools
+const ImageGuidePage = lazy(() => import('./pages/dev/ImageGuidePage'));
 
 function NotFoundPage() {
   const { t } = useTranslation();
@@ -32,10 +36,15 @@ function PageLoader() {
   );
 }
 
+const prefersReducedMotion =
+  typeof window !== 'undefined'
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
+
 const pageVariants = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
+  initial: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.35, ease: 'easeOut' } },
+  exit: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -8, transition: { duration: 0.2 } },
 };
 
 function AnimatedRoutes() {
@@ -59,6 +68,12 @@ function AnimatedRoutes() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            
+            {/* Development Routes */}
+            {import.meta.env.DEV && (
+              <Route path="/dev/image-guide" element={<ImageGuidePage />} />
+            )}
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
@@ -78,6 +93,7 @@ export default function App() {
     <BrowserRouter>
       <a href="#main-content" className="skip-link">{t('common.skip')}</a>
       <ScrollProgress />
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main id="main-content" className="flex-1" tabIndex={-1}>

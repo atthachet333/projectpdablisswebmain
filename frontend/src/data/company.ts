@@ -6,8 +6,8 @@ export const COMPANY_INFO = {
   nameFull: 'PDA BLISS COMPANY LIMITED',
   tagline: 'โซลูชันธุรกิจครบวงจร เพื่อการเติบโตอย่างมั่นคง',
   description: 'ผู้ให้บริการด้านเอกสารแรงงานต่างด้าว บริการสมาชิก และที่ปรึกษาสำหรับธุรกิจ บัญชี อุตสาหกรรม และเส้นทางการเงิน เพื่อเสริมศักยภาพให้ธุรกิจของคุณดำเนินงานได้อย่างมีประสิทธิภาพ ปลอดภัย และเติบโตได้อย่างยั่งยืนในทุกมิติทางธุรกิจ',
-  phone: '02-123-4567',
-  email: 'contact@pdabliss.co.th',
+  phone: '0638693614',
+  email: 'pdablissoffice@gmail.com',
   lineOa: '@pdabliss',
   website: 'www.pdabliss.co.th',
   address: 'เลขที่ 88/8 อาคารไทยธุรกิจ ชั้น 5 ถนนพระราม 4 แขวงสีลม เขตบางรัก กรุงเทพฯ 10500',
@@ -17,7 +17,7 @@ export const COMPANY_INFO = {
     facebook: 'https://facebook.com/pdabliss',
     line: 'https://line.me/R/ti/p/@pdabliss',
     linkedin: 'https://linkedin.com/company/pdabliss',
-    email: 'mailto:contact@pdabliss.co.th',
+    email: 'mailto:pdablissoffice@gmail.com',
   },
 } as const;
 

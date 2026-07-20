@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import SmartImage from '../common/SmartImage';
+import { siteImages } from '../../config/images';
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -12,7 +14,7 @@ export default function HeroSection() {
       aria-label={t('nav.home')}
     >
       {/* --- Background Decorative Elements --- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
         {/* Soft Green Glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-[#EAF8EF] opacity-60 blur-[120px] mix-blend-multiply" />
         
@@ -32,12 +34,12 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="container-custom relative z-10 w-full">
+      <div className="container-custom relative w-full">
         {/* 46/54 Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center py-12 lg:py-16">
           
           {/* Left Content */}
-          <div className="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-center">
+          <div className="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-center relative z-20">
             
             {/* Badge with Pulse */}
             <motion.div
@@ -104,31 +106,36 @@ export default function HeroSection() {
           </div>
 
           {/* Right Content / Image */}
-          <div className="order-1 lg:order-2 lg:col-span-7 relative flex justify-end">
+          <div className="order-1 lg:order-2 lg:col-span-7 relative flex justify-end z-10">
             <motion.div
-              className="relative w-full max-w-[700px] group"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              className="relative w-full max-w-[720px] group overflow-visible"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Animated Light Border Container */}
-              <div className="animated-border rounded-[24px]">
-                {/* Premium Image Frame */}
-                <div className="relative overflow-hidden aspect-[4/3] md:aspect-[16/11] rounded-[24px] bg-white border border-[#E7EBE8]">
-                  <img
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80&auto=format&fit=crop"
-                    alt="ทีมงานมืออาชีพ PDA BLISS SOLUTIONS พร้อมให้บริการ"
-                    className="w-full h-full object-cover object-center transform transition-transform duration-[10s] group-hover:scale-105"
-                    loading="eager"
-                  />
-                  {/* Sweep Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[200%] animate-[shine_10s_infinite_ease-in-out]" aria-hidden="true" />
-                </div>
-              </div>
+              {/* Image Frame (z-10) */}
+              <motion.div 
+                className="relative z-10 w-full h-[280px] sm:h-[360px] md:h-[430px] lg:h-[460px] xl:h-[500px] rounded-[24px] bg-transparent overflow-hidden"
+                initial={{ clipPath: 'inset(10% 10% 10% 10% rounded 24px)' }}
+                animate={{ clipPath: 'inset(0% 0% 0% 0% rounded 24px)' }}
+                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4, transition: { duration: 0.4 } }}
+              >
+                <SmartImage
+                  src={siteImages.home.hero}
+                  alt="ทีมงานมืออาชีพ PDA BLISS SOLUTIONS พร้อมให้บริการ"
+                  className="w-full h-full object-cover object-center transform transition-transform duration-[10s] group-hover:scale-105"
+                  priority={true}
+                  aspectRatio="16/11"
+                  recommendedSize="1600x1100"
+                />
+                {/* Sweep Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[200%] animate-[shine_10s_infinite_ease-in-out] pointer-events-none" aria-hidden="true" />
+              </motion.div>
 
-              {/* Floating Cards */}
+              {/* Floating Cards (z-30) */}
               <div
-                className="absolute -left-6 md:-left-12 bottom-12 card-glass p-5 animate-float"
+                className="absolute -left-4 md:-left-8 bottom-8 z-30 card-glass p-5 animate-float"
                 aria-hidden="true"
               >
                 <div className="flex items-start gap-4">
@@ -140,7 +147,7 @@ export default function HeroSection() {
               </div>
 
               <div
-                className="absolute -right-4 md:right-8 -top-8 card-glass p-4 animate-float"
+                className="absolute -right-4 md:-right-8 -top-8 z-30 card-glass p-4 animate-float"
                 style={{ animationDelay: '2s' }}
                 aria-hidden="true"
               >
@@ -163,7 +170,7 @@ export default function HeroSection() {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[#747D77]"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[#747D77] z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}

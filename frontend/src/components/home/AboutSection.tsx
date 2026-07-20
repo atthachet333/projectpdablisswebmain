@@ -2,6 +2,8 @@ import { Users, Shield, Heart, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SectionDivider from '../common/SectionDivider';
+import SmartImage from '../common/SmartImage';
+import { siteImages } from '../../config/images';
 
 export default function AboutSection() {
   const { t } = useTranslation();
@@ -19,43 +21,57 @@ export default function AboutSection() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
           {/* Left: Image (Editorial overlapping style) */}
-          <motion.div
-            className="w-full lg:w-1/2 relative group"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="relative z-10 w-[90%] md:w-[80%] rounded-[24px] overflow-hidden shadow-card transition-all duration-500 group-hover:shadow-card-hover">
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop"
-                alt="สำนักงาน PDA BLISS"
-                className="w-full aspect-[4/5] object-cover transition-transform duration-[10s] group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent mix-blend-multiply pointer-events-none" />
-            </div>
+          <div className="w-full lg:w-1/2 relative group">
+            <motion.div
+              className="relative z-10 w-[75%] max-w-[560px]"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <motion.div 
+                className="rounded-[24px] overflow-hidden shadow-card transition-all duration-500"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                whileHover={{ x: -2, transition: { duration: 0.3 } }}
+              >
+                <SmartImage
+                  src={siteImages.home.aboutMain}
+                  alt="สำนักงาน PDA BLISS"
+                  className="w-full aspect-[4/5] object-cover transition-transform duration-[10s] group-hover:scale-105"
+                  aspectRatio="4/5"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent mix-blend-multiply pointer-events-none" />
+              </motion.div>
+            </motion.div>
             
             {/* Overlapping smaller image */}
             <motion.div 
-              className="absolute bottom-10 right-0 w-[55%] md:w-[45%] rounded-[24px] overflow-hidden shadow-floating border-4 border-white z-20 group-hover:-translate-y-2 transition-transform duration-500"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="absolute -bottom-6 md:-bottom-10 right-[10%] md:right-[15%] w-[34%] max-w-[250px] z-20"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=80&auto=format&fit=crop"
-                alt="ทีมงานมืออาชีพ PDA BLISS"
-                className="w-full aspect-square object-cover transition-transform duration-[10s] group-hover:scale-110"
-                loading="lazy"
-              />
+              <motion.div
+                className="rounded-[24px] overflow-hidden shadow-floating"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 0.5 }}
+                whileHover={{ x: 4, y: -4, transition: { duration: 0.3 } }}
+              >
+                <SmartImage
+                  src={siteImages.home.aboutSecondary}
+                  alt="ทีมงานมืออาชีพ PDA BLISS"
+                  className="w-full aspect-square object-cover transition-transform duration-[10s] group-hover:scale-110"
+                  aspectRatio="1/1"
+                />
+              </motion.div>
             </motion.div>
 
             {/* Decorative Element */}
             <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#EAF8EF] rounded-full z-0 group-hover:scale-110 transition-transform duration-500" aria-hidden="true" />
             <div className="absolute -bottom-10 left-10 w-40 h-40 bg-[#19B965]/10 rounded-full blur-[40px] z-0 group-hover:bg-[#19B965]/20 transition-colors duration-500" aria-hidden="true" />
-          </motion.div>
+          </div>
 
           {/* Right: Content */}
           <motion.div

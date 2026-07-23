@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Shield, Users, FileCheck, Clock } from 'lucide-react';
+import { Shield, Layers, FileCheck, Clock } from 'lucide-react';
 
 export default function TrustBarSection() {
   const { t } = useTranslation();
 
+  /* ✏️ ตัวเลข/ข้อความแก้ที่ locales → trustBar (ไม่ใช้ตัวเลขที่ไม่มีข้อมูลจริง) */
   const metrics = [
     {
       icon: Clock,
@@ -12,14 +13,14 @@ export default function TrustBarSection() {
       label: t('trustBar.experience', 'ปีแห่งประสบการณ์'),
     },
     {
-      icon: Users,
-      value: '1,000+',
-      label: t('trustBar.clients', 'ลูกค้าที่ดูแล'),
+      icon: Layers,
+      value: '3',
+      label: t('trustBar.services', 'กลุ่มบริการหลัก'),
     },
     {
       icon: FileCheck,
-      value: '10,000+',
-      label: t('trustBar.documents', 'เอกสารต่อปี'),
+      value: 'End-to-End',
+      label: t('trustBar.coverage', 'ดูแลครบทุกขั้นตอน'),
     },
     {
       icon: Shield,
@@ -46,8 +47,8 @@ export default function TrustBarSection() {
                 <div className="w-12 h-12 rounded-full bg-[#151A17] flex items-center justify-center mb-3 border border-[#3F4742] group-hover:border-[#19B965] transition-colors duration-300">
                   <Icon className="w-5 h-5 text-[#19B965] opacity-90 stroke-[1.5]" aria-hidden="true" />
                 </div>
-                <span className="text-2xl md:text-3xl font-num font-extrabold text-white tracking-tight mb-1 group-hover:text-[#9EE6BC] transition-colors">{metric.value}</span>
-                <span className="text-xs md:text-sm font-bold text-[#747D77]">{metric.label}</span>
+                <span className="text-xl md:text-2xl font-num font-bold text-white tracking-tight mb-1 whitespace-nowrap group-hover:text-[#9EE6BC] transition-colors">{metric.value}</span>
+                <span className="text-xs md:text-sm font-bold text-[#57615B]">{metric.label}</span>
               </motion.div>
             );
           })}

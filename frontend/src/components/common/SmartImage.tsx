@@ -62,7 +62,7 @@ export default function SmartImage({
           <div className="text-center px-4">
             <p className="text-xs font-bold text-[#0B0F0D] mb-1 truncate max-w-[200px] lg:max-w-[300px]" title={imgSrc}>{imgSrc}</p>
             {(recommendedSize || recommendedRatio) && (
-              <p className="text-[10px] text-[#747D77]">
+              <p className="text-[10px] text-[#57615B]">
                 {recommendedSize && `Size: ${recommendedSize}`}
                 {recommendedSize && recommendedRatio && ' | '}
                 {recommendedRatio && `Ratio: ${recommendedRatio}`}
@@ -118,7 +118,7 @@ export default function SmartImage({
   }
 
   return (
-    <div className={`relative overflow-hidden bg-[#F3F6F4] ${className}`} style={{ aspectRatio: imgAspectRatio }}>
+    <div className={`relative bg-transparent ${className}`} style={{ aspectRatio: imgAspectRatio }}>
       <img
         src={imgSrc}
         alt={alt}

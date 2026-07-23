@@ -31,23 +31,19 @@
     "phone": "Call {{phone}}"
   },
   "footer": {
-    "about": "Specialists in migrant workforce documentation, membership services and practical business consulting that keeps your operation moving forward.",
-    "quickLinks": "Quick links",
-    "services": "Our services",
-    "contact": "Contact",
-    "phone": "Call",
-    "email": "Email",
-    "rights": "All rights reserved",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "companyDesc": "Providing migrant worker documentation, business membership services, and consulting for management, accounting, industrial, and financial pathways. We aim to reduce complexity, increase accuracy, and continuously support client growth.",
-    "officeHours": "Mon-Fri 09:00 - 18:00 (Closed on weekends and public holidays)",
-    "responseTime": "Response within 1 business day",
-    "registration": "Company Registration: XXXXXXXXXXXXX",
     "ctaTitle": "Ready to elevate your business management?",
-    "ctaDesc": "Talk to our team to assess your needs, plan your steps, and find the right service format for your business.",
-    "ctaBtn1": "Get a Consultation",
-    "ctaBtn2": "View All Services"
+    "ctaDesc": "Talk to our team to assess your needs and find the service package that fits your business.",
+    "ctaBtn1": "Request Consultation",
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contact": "Contact Us",
+    "rights": "All rights reserved.",
+    "companyDesc": "Provider of migrant worker document management, business membership services, and administrative consulting.",
+    "registration": "Company Registration No: XXXXXXXXXXXXX",
+    "officeHours": "Mon–Fri 09:00–18:00",
+    "responseTime": "Response within 1 business day",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "floating": {
     "title": "Free consultation",
@@ -233,7 +229,11 @@
     "heroLine1": "Easy to subscribe,",
     "heroLine2": "Seamless business care",
     "heroDesc": "Get monthly support from the PDA BLISS expert team. Fast, timely, and designed to keep your business moving steadily forward.",
-    "badge": "Membership",
+    "badge": {
+      "starter": "Great for Beginners",
+      "pro": "Most Popular",
+      "enterprise": "Most Complete"
+    },
     "sectionTitle": "Choose Your Perfect Plan",
     "sectionSub": "Valuable pricing for comprehensive business care",
     "monthly": "Monthly",
@@ -356,11 +356,6 @@
       "pro": "The right balance of price, tracking depth, and consultation",
       "enterprise": "Comprehensive, fully tailored to your organization"
     },
-    "badge": {
-      "starter": "Great for Beginners",
-      "pro": "Most Popular",
-      "enterprise": "Most Complete"
-    },
     "suitableFor": {
       "starter": [
         "Small business owners",
@@ -410,28 +405,74 @@
     },
     "featureDetails": {
       "starter": {
-        "contact": ["Standard channels", "Response within 2 business days"],
-        "tracking": ["Basic task tracking", "Key status updates"],
-        "consultation": ["Basic consultation, 1 session/month"],
-        "planning": ["Not included"],
-        "reports": ["Not included"],
-        "manager": ["Not included"]
+        "contact": [
+          "Standard channels",
+          "Response within 2 business days"
+        ],
+        "tracking": [
+          "Basic task tracking",
+          "Key status updates"
+        ],
+        "consultation": [
+          "Basic consultation, 1 session/month"
+        ],
+        "planning": [
+          "Not included"
+        ],
+        "reports": [
+          "Not included"
+        ],
+        "manager": [
+          "Not included"
+        ]
       },
       "pro": {
-        "contact": ["Priority channels", "Response within 1 business day"],
-        "tracking": ["In-depth task tracking", "Key deadline alerts", "Monthly status summary"],
-        "consultation": ["3 consultation sessions/month"],
-        "planning": ["Assistance with document & operational planning"],
-        "reports": ["Monthly summary report"],
-        "manager": ["Shared care team"]
+        "contact": [
+          "Priority channels",
+          "Response within 1 business day"
+        ],
+        "tracking": [
+          "In-depth task tracking",
+          "Key deadline alerts",
+          "Monthly status summary"
+        ],
+        "consultation": [
+          "3 consultation sessions/month"
+        ],
+        "planning": [
+          "Assistance with document & operational planning"
+        ],
+        "reports": [
+          "Monthly summary report"
+        ],
+        "manager": [
+          "Shared care team"
+        ]
       },
       "enterprise": {
-        "contact": ["Dedicated fast-track channel", "Response within 4–8 business hours"],
-        "tracking": ["Multi-project tracking", "Multi-department", "Multi-branch"],
-        "consultation": ["Per agreed scope"],
-        "planning": ["Monthly and quarterly planning"],
-        "reports": ["Executive reports", "Risk summaries", "Recommendations"],
-        "manager": ["Dedicated Account Manager"]
+        "contact": [
+          "Dedicated fast-track channel",
+          "Response within 4–8 business hours"
+        ],
+        "tracking": [
+          "Multi-project tracking",
+          "Multi-department",
+          "Multi-branch"
+        ],
+        "consultation": [
+          "Per agreed scope"
+        ],
+        "planning": [
+          "Monthly and quarterly planning"
+        ],
+        "reports": [
+          "Executive reports",
+          "Risk summaries",
+          "Recommendations"
+        ],
+        "manager": [
+          "Dedicated Account Manager"
+        ]
       }
     },
     "quickDifferences": {
@@ -578,21 +619,6 @@
         "a": "You can cancel by giving a 30-day notice via phone or email. There are no cancellation fees."
       }
     ]
-  },
-  "footer": {
-    "ctaTitle": "Ready to elevate your business management?",
-    "ctaDesc": "Talk to our team to assess your needs and find the service package that fits your business.",
-    "ctaBtn1": "Request Consultation",
-    "quickLinks": "Quick Links",
-    "services": "Our Services",
-    "contact": "Contact Us",
-    "rights": "All rights reserved.",
-    "companyDesc": "Provider of migrant worker document management, business membership services, and administrative consulting.",
-    "registration": "Company Registration No: XXXXXXXXXXXXX",
-    "officeHours": "Mon\u2013Fri 09:00\u201318:00",
-    "responseTime": "Response within 1 business day",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
   },
   "cta": {
     "title": "Ready to Get Started?",
@@ -915,6 +941,179 @@
       "export": "Export",
       "retail": "Retail",
       "industrialServices": "Industrial Services"
+    }
+  },
+  "trustBar": {
+    "experience": "Years of Experience",
+    "services": "Core Service Groups",
+    "coverage": "Full Step-by-Step Coverage",
+    "security": "Data Security Commitment"
+  },
+  "aboutPage": {
+    "hero": {
+      "eyebrow": "About Us",
+      "titleLine1": "The Partner That Cares For",
+      "titleLine2": "Every Critical Step of Your Business",
+      "subtitle": "PDA BLISS reduces the complexity of documentation, software systems, and business management — so your organization runs efficiently and grows with confidence.",
+      "intro": "We combine our team’s expertise with clear, transparent, verifiable workflows — supporting clients from day one through continuous long-term care.",
+      "ctaPrimary": "View Our Services",
+      "ctaSecondary": "Talk to Our Team"
+    },
+    "intro": {
+      "eyebrow": "Meet PDA BLISS",
+      "title": "We believe good business starts with clear systems",
+      "p1": "PDA BLISS COMPANY LIMITED was founded to help organizations manage complex work more easily — from foreign-worker documentation and subscription software services to consulting on business, accounting, industry, and internal finance.",
+      "p2": "We don’t just get the work done. We focus on accuracy, status tracking, clear communication, and approaches designed around each organization.",
+      "keywords": [
+        "Systematic workflows",
+        "Trackable status",
+        "Fewer complex steps",
+        "Continuous care",
+        "Expert guidance"
+      ]
+    },
+    "expertise": {
+      "eyebrow": "Our Expertise",
+      "title": "Expertise that covers your business needs",
+      "linkLabel": "View service details",
+      "items": [
+        {
+          "title": "Foreign Worker Documentation",
+          "desc": "End-to-end consulting, verification, and processing of foreign-worker documents — with systematic status tracking and progress updates to reduce risk and errors."
+        },
+        {
+          "title": "Subscription & Software Support",
+          "desc": "Subscription-based software services covering setup, daily use, data verification, issue resolution, and continuous customer support."
+        },
+        {
+          "title": "Business Consulting",
+          "desc": "Consulting across business, accounting, industry, internal finance, and organizational management — structuring workflows, improving efficiency, cutting costs, and reducing risk."
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Us",
+      "title": "Why organizations trust PDA BLISS",
+      "items": [
+        {
+          "title": "End-to-End Service",
+          "desc": "From needs analysis and planning through execution and follow-up"
+        },
+        {
+          "title": "Multi-Disciplinary Team",
+          "desc": "Experienced in documentation, software systems, business, accounting, and management"
+        },
+        {
+          "title": "Clear Working Process",
+          "desc": "Clients can systematically track status, progress, and key information"
+        },
+        {
+          "title": "Accuracy First",
+          "desc": "Data and details verified at every step to reduce errors and risk"
+        },
+        {
+          "title": "Tailored to Each Organization",
+          "desc": "No one-size-fits-all — we design around each business’s problems and goals"
+        },
+        {
+          "title": "Care After Launch",
+          "desc": "Ready to advise, solve problems, and support clients continuously"
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "How We Work",
+      "title": "A clear process at every step",
+      "steps": [
+        {
+          "title": "Listen & Analyze Requirements",
+          "desc": "Understanding your goals and constraints"
+        },
+        {
+          "title": "Verify Data & Define the Approach",
+          "desc": "Designing scope and timelines together"
+        },
+        {
+          "title": "Execute the Plan",
+          "desc": "Delivered by specialists following agreed steps"
+        },
+        {
+          "title": "Track & Report Progress",
+          "desc": "Regular, verifiable status updates"
+        },
+        {
+          "title": "Review & Ongoing Care",
+          "desc": "Handover plus long-term support"
+        }
+      ]
+    },
+    "values": {
+      "eyebrow": "Our Values",
+      "title": "The values behind everything we do",
+      "desc": "We stand for verifiable work, accountability for results, and continuously improving our processes — so clients receive quality service that truly fits their business.",
+      "items": [
+        {
+          "word": "Accuracy",
+          "desc": "Every detail verified before delivery"
+        },
+        {
+          "word": "Responsibility",
+          "desc": "We keep our promises and deadlines"
+        },
+        {
+          "word": "Transparency",
+          "desc": "Straightforward, verifiable communication"
+        },
+        {
+          "word": "Client Understanding",
+          "desc": "We listen and design for each business"
+        },
+        {
+          "word": "Continuous Improvement",
+          "desc": "Always refining the way we work"
+        },
+        {
+          "word": "Teamwork",
+          "desc": "Blending expertise across disciplines"
+        }
+      ]
+    },
+    "confidence": {
+      "eyebrow": "Business Confidence",
+      "title": "More than a service — a system your business can truly use",
+      "items": [
+        {
+          "value": "3",
+          "label": "Core Service Groups",
+          "desc": "Labor documentation · Software · Business consulting"
+        },
+        {
+          "value": "Expert Team",
+          "label": "Multi-Disciplinary Specialists",
+          "desc": "Covering documents, systems, accounting, and management"
+        },
+        {
+          "value": "Traceable",
+          "label": "Clear Work-Tracking Process",
+          "desc": "Status and progress verifiable at every step"
+        },
+        {
+          "value": "End-to-End",
+          "label": "Care From Start to Post-Delivery",
+          "desc": "By your business’s side for the long term"
+        },
+        {
+          "value": "Tailored",
+          "label": "Approaches Fit to Each Business",
+          "desc": "Designed from your real problems and goals"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Let PDA BLISS turn complex work into a simpler system",
+      "subtitle": "Talk with our team to find the approach that fits your organization.",
+      "primary": "Contact Us",
+      "secondary": "View All Services"
     }
   }
 }

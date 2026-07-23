@@ -13,7 +13,7 @@ export default function WhyUsSection() {
         {/* Header */}
         <SectionDivider 
           title={t('whyUs.title', 'ทำไมต้องเลือกเรา')}
-          subtitle={t('whyUs.subtitle', 'เหตุผลที่ลูกค้าไว้วางใจ PDA BLISS มากกว่า 1,000 ราย')}
+          subtitle={t('whyUs.subtitle', 'เหตุผลที่ลูกค้าไว้วางใจ PDA BLISS')}
           variant="E"
           eyebrow={t('whyUs.badge', 'WHY CHOOSE US')}
         />
@@ -63,7 +63,7 @@ export default function WhyUsSection() {
               <Clock className="w-6 h-6 text-[#19B965]" />
             </div>
             <h3 className="text-xl font-extrabold mb-3 text-white">{t('whyUs.items.fast.title')}</h3>
-            <p className="text-white/70 text-sm leading-relaxed">{t('whyUs.items.fast.desc')}</p>
+            <p className="text-white/85 text-sm leading-relaxed">{t('whyUs.items.fast.desc')}</p>
           </motion.div>
 
           {/* Small Item 3 - Glass / Soft Gray Card */}
@@ -78,7 +78,7 @@ export default function WhyUsSection() {
               <Users className="w-6 h-6 text-[#0E8F4D] group-hover:text-white" />
             </div>
             <h3 className="text-xl font-extrabold text-[#0B0F0D] mb-3">{t('whyUs.items.allInOne.title')}</h3>
-            <p className="text-[#747D77] text-sm leading-relaxed">{t('whyUs.items.allInOne.desc')}</p>
+            <p className="text-[#57615B] text-sm leading-relaxed">{t('whyUs.items.allInOne.desc')}</p>
           </motion.div>
 
           {/* Large Item 4 (Span 2 columns) - Gradient/Greenish Card */}

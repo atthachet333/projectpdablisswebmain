@@ -2,7 +2,6 @@ import { Users, ShieldCheck, Gem, Target, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import SmartImage from '../common/SmartImage';
 import { siteImages } from '../../config/images';
 
 export default function AboutSection() {
@@ -34,65 +33,30 @@ export default function AboutSection() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* ── Main image: full-bleed, rounded corners, directional shadow ── */}
+              {/* Decorative shapes BEHIND the poster — extend past its edges */}
               <div
-                className="relative overflow-hidden transition-all duration-700 group-hover:-translate-y-1"
-                style={{
-                  borderRadius: '16px',
-                  /* Directional shadow: heavier bottom-right = natural light from top-left */
-                  filter: 'drop-shadow(0 20px 48px rgba(11,15,13,0.30)) drop-shadow(0 4px 12px rgba(11,15,13,0.15))',
-                }}
+                className="absolute -inset-10 pointer-events-none -z-10 opacity-60"
+                style={{ background: 'radial-gradient(ellipse 70% 60% at 40% 55%, rgba(25,185,101,0.22) 0%, transparent 70%)', filter: 'blur(40px)' }}
+                aria-hidden="true"
+              />
+              <div className="absolute -left-8 -top-10 w-32 h-32 rounded-full border border-dashed border-[#19B965]/25 pointer-events-none -z-10" aria-hidden="true" />
+
+              {/*
+                ── Main poster: floating, natural ratio, no panel/overlay ──
+                ⚠️ ไฟล์ about-main.png มีพื้นหลังติดมาในตัวไฟล์ — เปลี่ยนเป็น PNG โปร่งใสได้ที่ siteImages.home.aboutMain
+              */}
+              <div
+                className="img-drift-a relative transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 group-hover:rotate-0"
+                style={{ transform: 'rotate(-1.5deg)' }}
               >
-                <SmartImage
-                  src={siteImages.home.aboutMain}
+                <img
+                  src={siteImages.home.aboutMain.src}
                   alt="สำนักงาน PDA BLISS"
-                  className="w-full aspect-[4/3]"
+                  loading="lazy"
+                  decoding="async"
+                  className="img-radius-lg w-full h-auto object-contain select-none"
+                  style={{ filter: 'var(--shadow-image)' }}
                 />
-
-                {/* Rich layered overlay inside image — creates depth, not a frame */}
-                {/* Bottom dramatic fade */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(to top, rgba(6,78,43,0.72) 0%, rgba(11,15,13,0.25) 40%, transparent 70%)',
-                  }}
-                />
-                {/* Top subtle vignette */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: 'radial-gradient(ellipse at 50% 0%, rgba(11,15,13,0.20) 0%, transparent 60%)',
-                  }}
-                />
-                {/* Left-edge depth shadow */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(to right, rgba(11,15,13,0.20) 0%, transparent 30%)',
-                  }}
-                />
-                {/* Hover green wash */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                  style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.16) 0%, transparent 50%)' }}
-                />
-                {/* Hover shimmer sweep */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none z-10" />
-                {/* Bottom accent line */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20"
-                  style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 35%, #19B965 65%, transparent 95%)' }}
-                />
-
-                {/* Overlay Text on Main Image */}
-                <div className="absolute top-8 inset-x-0 flex flex-col items-center pointer-events-none z-10 px-6 text-center">
-                  <div className="w-12 h-[3px] bg-[#19B965] mb-4 shadow-[0_0_12px_rgba(25,185,101,0.7)]" />
-                  <p className="font-extrabold text-2xl lg:text-3xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
-                    <span className="text-white">
-                      {t('about.imageText', 'ยกระดับธุรกิจของคุณสู่มาตรฐานสากล')}
-                    </span>
-                  </p>
-                </div>
               </div>
 
               {/* ── Overlapping secondary image: rounded card floating over main ── */}
@@ -113,31 +77,18 @@ export default function AboutSection() {
                   aria-hidden="true"
                 />
 
-                {/* Secondary image */}
+                {/* Secondary poster — floating, opposite tilt, no panel */}
                 <div
-                  className="relative overflow-hidden transition-all duration-700 group-hover/sec:-translate-y-2"
-                  style={{
-                    borderRadius: '14px',
-                    filter: 'drop-shadow(0 16px 40px rgba(11,15,13,0.35)) drop-shadow(0 4px 12px rgba(11,15,13,0.20))',
-                  }}
+                  className="img-drift-b relative transition-all duration-700 group-hover/sec:-translate-y-2 group-hover/sec:rotate-0"
+                  style={{ transform: 'rotate(2deg)' }}
                 >
-                  <SmartImage
-                    src={siteImages.home.aboutSecondary}
+                  <img
+                    src={siteImages.home.aboutSecondary.src}
                     alt="ทีมงานมืออาชีพ PDA BLISS"
-                    className="w-full aspect-[4/3]"
-                  />
-                  {/* Overlay inside secondary */}
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'linear-gradient(to top, rgba(11,15,13,0.45) 0%, transparent 55%)' }}
-                  />
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover/sec:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.20) 0%, transparent 50%)' }}
-                  />
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover/sec:opacity-100 transition-opacity duration-500"
-                    style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 40%, #19B965 60%, transparent 95%)' }}
+                    loading="lazy"
+                    decoding="async"
+                    className="img-radius-md w-full h-auto object-contain select-none"
+                    style={{ filter: 'drop-shadow(0 18px 40px rgba(11,15,13,0.26)) drop-shadow(0 4px 12px rgba(11,15,13,0.13))' }}
                   />
                 </div>
 
@@ -183,17 +134,18 @@ export default function AboutSection() {
                 return (
                   <motion.div
                     key={i}
-                    className="p-5 rounded-2xl bg-white border border-[#E7EBE8]/60 shadow-[0_4px_20px_rgba(11,15,13,0.02)] hover:border-[#19B965]/30 hover:shadow-[0_8px_30px_rgba(25,185,101,0.06)] transition-all duration-400 group"
+                    className="group relative p-4 -m-1 rounded-xl transition-colors duration-400 hover:bg-[#EAF8EF]/50"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 + (i * 0.1), ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#F3F6F4] flex items-center justify-center mb-4 group-hover:bg-[#EAF8EF] transition-colors duration-400">
-                      <Icon className="w-5 h-5 text-[#064E2B] group-hover:scale-110 transition-transform duration-400 stroke-[1.5]" />
+                    <div className="flex items-center gap-3 mb-2.5">
+                      <Icon className="w-5 h-5 text-[#0E8F4D] stroke-[1.5] transition-transform duration-400 group-hover:scale-110 group-hover:-rotate-3 flex-shrink-0" aria-hidden="true" />
+                      <h4 className="font-bold text-[#0B0F0D] text-sm group-hover:text-[#064E2B] transition-colors duration-300">{item.title}</h4>
                     </div>
-                    <h4 className="font-bold text-[#0B0F0D] text-sm mb-2">{item.title}</h4>
-                    <p className="text-[#747D77] text-xs leading-relaxed">{item.description}</p>
+                    <p className="text-[#57615B] text-xs leading-relaxed pl-8 group-hover:text-[#3F4742] transition-colors duration-300">{item.description}</p>
+                    <span className="absolute bottom-1.5 left-4 h-[1.5px] w-0 bg-[#19B965]/60 transition-all duration-500 group-hover:w-10" aria-hidden="true" />
                   </motion.div>
                 );
               })}

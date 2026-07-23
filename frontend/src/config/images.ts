@@ -12,6 +12,18 @@ export type ImageConfig = {
   section?: string;
 };
 
+/* ═══════════════════════════════════════════════════════════════════════
+ * ⚠️ ข้อจำกัดของไฟล์ภาพปัจจุบัน (ตรวจจากไฟล์จริงแล้ว):
+ * hero.png, about-main.png, about-secondary.png, service-*.png,
+ * documents.png, membership.png, consulting.png
+ * ล้วนเป็น "ภาพ/โปสเตอร์ทึบเต็มผืน" ที่มีพื้นหลัง (และบางไฟล์มีกรอบทอง)
+ * ติดมาในตัวไฟล์เอง — CSS ทำให้โปร่งใสไม่ได้
+ *
+ * ✏️ หากต้องการให้ภาพแสดงแบบไร้กรอบจริง 100%:
+ * ควรใช้ไฟล์ PNG/WebP พื้นหลังโปร่งใส แล้วเปลี่ยนค่า src ในไฟล์นี้ที่เดียว
+ * ระหว่างนี้ทุกภาพถูกจัดวางแบบ Floating Composition (เอียงเล็กน้อย +
+ * drop-shadow ที่ตัววัตถุ + shape ตกแต่งด้านหลัง) เพื่อลดความรู้สึกเป็นกรอบ
+ * ═══════════════════════════════════════════════════════════════════════ */
 export const siteImages: Record<string, Record<string, ImageConfig>> = {
   home: {
     hero: { 
@@ -44,7 +56,33 @@ export const siteImages: Record<string, Record<string, ImageConfig>> = {
     }
   },
   about: {
-    hero: { 
+    /* ═══════════════════════════════════════════════════════════════
+     * ✏️ รูปหน้า "เกี่ยวกับเรา" — เปลี่ยนรูปได้ที่นี่ที่เดียว
+     * วางไฟล์รูปใหม่ไว้ใน frontend/public แล้วแก้ค่า src ด้านล่าง
+     * แนะนำ PNG พื้นหลังโปร่งใส (จะแสดงแบบลอยอิสระ ไม่มีกรอบ)
+     * ═══════════════════════════════════════════════════════════════ */
+    heroIllustration: {
+      src: '/logo.png', fit: 'contain', position: 'center', scale: 1,
+      labelTh: 'ภาพประกอบ Hero เกี่ยวกับเรา', labelEn: 'About hero illustration',
+      usage: 'ภาพลอยอิสระด้านขวาของ Hero (แทนที่ /logo.png ด้วยรูปจริงภายหลัง)',
+      recommendedSize: '900 × 900 px (PNG โปร่งใส)', page: 'About', section: 'Hero',
+    },
+    expertiseDocuments: {
+      src: '/service-documents.png', fit: 'contain', position: 'center', scale: 1,
+      labelTh: 'ภาพบริการเอกสารแรงงาน', labelEn: 'Expertise: documents',
+      usage: 'ภาพประกอบบริการที่ 1 ใน Section ความเชี่ยวชาญ', recommendedSize: '1200 × 900 px', page: 'About', section: 'Expertise',
+    },
+    expertiseSoftware: {
+      src: '/service-membership.png', fit: 'contain', position: 'center', scale: 1,
+      labelTh: 'ภาพบริการซอฟต์แวร์', labelEn: 'Expertise: software',
+      usage: 'ภาพประกอบบริการที่ 2 ใน Section ความเชี่ยวชาญ', recommendedSize: '1200 × 900 px', page: 'About', section: 'Expertise',
+    },
+    expertiseConsulting: {
+      src: '/service-consulting.png', fit: 'contain', position: 'center', scale: 1,
+      labelTh: 'ภาพบริการที่ปรึกษา', labelEn: 'Expertise: consulting',
+      usage: 'ภาพประกอบบริการที่ 3 ใน Section ความเชี่ยวชาญ', recommendedSize: '1200 × 900 px', page: 'About', section: 'Expertise',
+    },
+    hero: {
       src: '/hero-about.png', fit: 'cover', position: 'center 35%', scale: 1, 
       labelTh: 'ภาพหน้าปก About', labelEn: 'About Hero', usage: 'ด้านขวาของ Hero หน้าเกี่ยวกับเรา', recommendedSize: '1200 × 800 px', page: 'About', section: 'Hero' 
     },

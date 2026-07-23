@@ -128,7 +128,7 @@ export default function SectionDivider({
         </div>
         {subtitle && (
           <motion.p
-            className={`text-base md:text-lg text-white/70 max-w-2xl ${center ? 'mx-auto' : ''}`}
+            className={`text-base md:text-lg text-white/85 max-w-2xl ${center ? 'mx-auto' : ''}`}
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

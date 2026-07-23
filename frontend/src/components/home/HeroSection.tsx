@@ -91,7 +91,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="text-[34px] sm:text-[40px] md:text-[48px] lg:text-[54px] xl:text-[60px] font-extrabold leading-[1.08] mb-8 text-[#0B0F0D]">
+            <h1 className="text-[30px] sm:text-[36px] md:text-[42px] lg:text-[46px] xl:text-[50px] font-bold leading-[1.12] mb-8 text-[#0B0F0D]">
               <span className="block overflow-hidden">
                 <motion.span className="block" initial={{ y: '110%' }} animate={{ y: 0 }} transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}>
                   {t('hero.title1', 'โซลูชันธุรกิจ')}
@@ -136,7 +136,7 @@ export default function HeroSection() {
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
               <Link to="/contact" className="btn-secondary group">
-                <MessageCircle className="w-4 h-4 text-[#747D77] group-hover:text-[#0E8F4D] transition-colors" aria-hidden="true" />
+                <MessageCircle className="w-4 h-4 text-[#57615B] group-hover:text-[#0E8F4D] transition-colors" aria-hidden="true" />
                 {t('hero.ctaSecondary', 'ขอรับคำปรึกษา')}
               </Link>
             </motion.div>
@@ -150,40 +150,40 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Green ambient glow behind image */}
+              {/* Decorative layer BEHIND the photo — separate shapes, not a frame */}
               <div
-                className="absolute -inset-8 rounded-[36px] pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse, rgba(25,185,101,0.15) 0%, transparent 70%)', filter: 'blur(40px)' }}
+                className="absolute -inset-12 pointer-events-none -z-10"
+                style={{ background: 'radial-gradient(ellipse 65% 55% at 60% 45%, rgba(25,185,101,0.18) 0%, rgba(126,200,227,0.08) 50%, transparent 75%)', filter: 'blur(44px)' }}
+                aria-hidden="true"
+              />
+              <div className="absolute -right-6 -top-8 w-40 h-40 rounded-full border border-dashed border-[#19B965]/25 pointer-events-none -z-10 animate-float-slow" aria-hidden="true" />
+              <div
+                className="absolute -left-4 -bottom-6 w-24 h-24 pointer-events-none -z-10 opacity-40"
+                style={{ backgroundImage: 'radial-gradient(#0E8F4D55 1.5px, transparent 1.5px)', backgroundSize: '14px 14px' }}
                 aria-hidden="true"
               />
 
-              {/* Image — full bleed, rounded, directional drop-shadow (no card frame) */}
+              {/*
+                Photo with feathered edges (CSS mask) — blends into the page,
+                no panel, no border-radius box, no overflow clipping.
+                ✏️ เปลี่ยนรูปได้ที่ siteImages.home.hero (แนะนำภาพ PNG/WebP โปร่งใสถ้ามี)
+              */}
               <motion.div
-                className="relative z-10 w-full h-auto overflow-hidden group"
-                initial={{ clipPath: 'inset(8% 8% 8% 8% round 16px)' }}
-                animate={{ clipPath: 'inset(0% 0% 0% 0% round 16px)' }}
-                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  borderRadius: '16px',
-                  filter: [
-                    'drop-shadow(0 4px 12px rgba(11,15,13,0.16))',
-                    'drop-shadow(0 20px 52px rgba(11,15,13,0.22))',
-                  ].join(' '),
-                }}
+                className="img-drift-c relative z-10 w-full group transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 <img
                   src={siteImages.home.hero.src}
                   alt={siteImages.home.hero.labelTh || 'ทีมงาน PDA BLISS SOLUTIONS'}
-                  className="w-full h-auto max-h-[550px] object-cover object-center transition-transform duration-700 transform group-hover:scale-[1.06]"
+                  className="w-full h-auto max-h-[560px] object-contain object-center transition-transform duration-[1200ms] group-hover:scale-[1.02]"
                   loading="eager"
+                  style={{
+                    maskImage: 'radial-gradient(118% 105% at 55% 42%, black 58%, transparent 90%)',
+                    WebkitMaskImage: 'radial-gradient(118% 105% at 55% 42%, black 58%, transparent 90%)',
+                  }}
                 />
-                {/* Cinematic overlays inside — no external frame */}
-                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(11,15,13,0.35) 0%, rgba(11,15,13,0.04) 40%, transparent 65%)' }} />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(25,185,101,0.14) 0%, transparent 55%)' }} />
-                {/* Light sweep */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] group-hover:animate-[shine_2.5s_ease-in-out_forwards] pointer-events-none z-10" />
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, transparent 5%, #19B965 35%, #19B965 65%, transparent 95%)' }} />
               </motion.div>
 
               {/* Floating Glass Card — Clients */}
@@ -202,8 +202,8 @@ export default function HeroSection() {
                       </svg>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-2xl font-num font-extrabold text-[#0B0F0D] leading-none">1,000+</span>
-                      <span className="text-[10px] font-bold text-[#747D77] uppercase tracking-wider mt-0.5">{t('hero.floating1Title', 'ลูกค้าที่ดูแล')}</span>
+                      <span className="text-sm font-bold text-[#0B0F0D] leading-tight">{t('hero.trustText1', 'ดูแลโดยผู้เชี่ยวชาญเฉพาะด้าน')}</span>
+                      <span className="text-[10px] font-bold text-[#57615B] uppercase tracking-wider mt-0.5">PDA BLISS</span>
                     </div>
                   </div>
                 </div>
@@ -225,8 +225,8 @@ export default function HeroSection() {
                       </svg>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-xl font-num font-extrabold text-[#0B0F0D] leading-none">98%</span>
-                      <span className="text-[10px] font-bold text-[#747D77] uppercase tracking-wider mt-0.5">{t('hero.floating2Title', 'ความพึงพอใจ')}</span>
+                      <span className="text-sm font-bold text-[#0B0F0D] leading-tight">{t('hero.trustText2', 'ติดตามสถานะเป็นระบบ')}</span>
+                      <span className="text-[10px] font-bold text-[#57615B] uppercase tracking-wider mt-0.5">Trackable</span>
                     </div>
                   </div>
                 </div>
@@ -238,7 +238,7 @@ export default function HeroSection() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[#747D77] z-20"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[#57615B] z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}

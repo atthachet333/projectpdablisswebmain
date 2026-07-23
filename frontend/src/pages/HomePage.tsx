@@ -6,7 +6,7 @@ import ServicesSection from '../components/home/ServicesSection';
 import AboutSection from '../components/home/AboutSection';
 import StatsSection from '../components/home/StatsSection';
 import WhyUsSection from '../components/home/WhyUsSection';
-// import ProcessSection from '../components/home/ProcessSection';
+import ProcessSection from '../components/home/ProcessSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import ClientLogosSection from '../components/home/ClientLogosSection';
 import CTASection from '../components/common/CTASection';
@@ -41,7 +41,7 @@ export default function HomePage() {
       <AboutSection />
       <StatsSection />
       <WhyUsSection />
-      {/* <ProcessSection /> */}
+      <ProcessSection />
       <TestimonialsSection />
       <ClientLogosSection />
       {/* <MembershipPreview /> */}

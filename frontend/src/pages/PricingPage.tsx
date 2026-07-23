@@ -58,7 +58,7 @@ function FeatureItem({ text, included, isDark, isHighlighted, tooltip }: {
       )}
       <span className={`text-sm leading-relaxed flex items-center gap-1.5 ${included
         ? (isDark ? 'text-white/90 font-medium' : 'text-[#0B0F0D] font-medium')
-        : (isDark ? 'text-white/35' : 'text-[#9BA89D]')}`}
+        : (isDark ? 'text-white/55' : 'text-[#7E8A82]')}`}
       >
         {text}
         {tooltip && included && (
@@ -83,7 +83,7 @@ function FeatureGroup({ label, items, isDark, isHighlighted }: {
     <div className="mb-4">
       <button
         className={`w-full flex items-center justify-between text-xs font-bold uppercase tracking-wider mb-2 py-1.5 px-2 rounded-lg transition-colors ${
-          isDark ? 'text-white/50 hover:text-white/70 hover:bg-white/5' : 'text-[#747D77] hover:text-[#3F4742] hover:bg-[#F3F6F4]'
+          isDark ? 'text-white/50 hover:text-white/85 hover:bg-white/5' : 'text-[#57615B] hover:text-[#3F4742] hover:bg-[#F3F6F4]'
         }`}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
@@ -301,7 +301,7 @@ function ComparisonStrip({ t }: { t: Function }) {
         <h3 className="text-2xl md:text-3xl font-extrabold text-[#0B0F0D] mb-3">
           {t('pricing.whichPackage', 'เลือกแพ็กเกจที่ใช่สำหรับคุณ')}
         </h3>
-        <p className="text-[#747D77] text-sm md:text-base max-w-xl mx-auto">
+        <p className="text-[#57615B] text-sm md:text-base max-w-xl mx-auto">
           {t('pricing.comparison.subtitle', 'เปรียบเทียบฟีเจอร์ครบทุกด้านในแต่ละแพ็กเกจ')}
         </p>
       </motion.div>
@@ -323,7 +323,7 @@ function ComparisonStrip({ t }: { t: Function }) {
               {/* Feature col header */}
               <th
                 scope="col"
-                className="sticky left-0 z-20 text-left py-6 px-6 font-bold text-[#747D77] text-xs uppercase tracking-widest bg-[#F7F9F8] border-r border-[#E7EBE8] w-[36%] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)]"
+                className="sticky left-0 z-20 text-left py-6 px-6 font-bold text-[#57615B] text-xs uppercase tracking-widest bg-[#F7F9F8] border-r border-[#E7EBE8] w-[36%] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)]"
               >
                 {t('pricing.comparison.featureHeader', 'ฟีเจอร์')}
               </th>
@@ -335,7 +335,7 @@ function ComparisonStrip({ t }: { t: Function }) {
                     <Users className="w-4 h-4 text-[#0E8F4D]" />
                   </span>
                   <span className="text-[#0B0F0D] font-extrabold text-sm">{t('pricing.comparison.starterHeader', 'Starter')}</span>
-                  <span className="text-[10px] text-[#9BA89D] font-normal tracking-wide">฿990/เดือน</span>
+                  <span className="text-[10px] text-[#7E8A82] font-normal tracking-wide">฿990/เดือน</span>
                 </div>
               </th>
 
@@ -363,7 +363,7 @@ function ComparisonStrip({ t }: { t: Function }) {
                     <Building2 className="w-4 h-4 text-[#3F4742]" />
                   </span>
                   <span className="text-[#0B0F0D] font-extrabold text-sm">{t('pricing.comparison.enterpriseHeader', 'Enterprise')}</span>
-                  <span className="text-[10px] text-[#9BA89D] font-normal tracking-wide">฿6,990/เดือน</span>
+                  <span className="text-[10px] text-[#7E8A82] font-normal tracking-wide">฿6,990/เดือน</span>
                 </div>
               </th>
             </tr>
@@ -404,7 +404,7 @@ function ComparisonStrip({ t }: { t: Function }) {
                       <td className="py-5 px-4 text-center align-middle">
                         <div className="flex flex-col items-center gap-1.5">
                           {statusIcon(row.starter.status, false)}
-                          <span className={`text-[11px] leading-snug ${row.starter.status === 'no' ? 'text-[#CBD5C0]' : row.starter.status === 'partial' ? 'text-[#747D77]' : 'text-[#3F4742] font-medium'}`}>
+                          <span className={`text-[11px] leading-snug ${row.starter.status === 'no' ? 'text-[#CBD5C0]' : row.starter.status === 'partial' ? 'text-[#57615B]' : 'text-[#3F4742] font-medium'}`}>
                             {row.starter.text}
                           </span>
                         </div>
@@ -424,7 +424,7 @@ function ComparisonStrip({ t }: { t: Function }) {
                       <td className="py-5 px-4 text-center align-middle">
                         <div className="flex flex-col items-center gap-1.5">
                           {statusIcon(row.enterprise.status, false)}
-                          <span className={`text-[11px] leading-snug ${row.enterprise.status === 'no' ? 'text-[#CBD5C0]' : row.enterprise.status === 'partial' ? 'text-[#747D77]' : 'text-[#3F4742] font-medium'}`}>
+                          <span className={`text-[11px] leading-snug ${row.enterprise.status === 'no' ? 'text-[#CBD5C0]' : row.enterprise.status === 'partial' ? 'text-[#57615B]' : 'text-[#3F4742] font-medium'}`}>
                             {row.enterprise.text}
                           </span>
                         </div>
@@ -440,7 +440,7 @@ function ComparisonStrip({ t }: { t: Function }) {
           <tfoot>
             <tr className="bg-[#F7F9F8] border-t-2 border-[#E7EBE8]">
               <td className="sticky left-0 z-10 py-5 px-6 bg-[#F7F9F8] border-r border-[#E7EBE8] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.07)]">
-                <span className="text-xs font-bold text-[#747D77] uppercase tracking-wider">เริ่มต้นใช้งาน</span>
+                <span className="text-xs font-bold text-[#57615B] uppercase tracking-wider">เริ่มต้นใช้งาน</span>
               </td>
               <td className="py-5 px-4 text-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold border-2 border-[#064E2B] text-[#064E2B] rounded-xl hover:bg-[#064E2B] hover:text-white transition-all duration-300">
@@ -465,7 +465,7 @@ function ComparisonStrip({ t }: { t: Function }) {
 
       {/* Legend */}
       <motion.div
-        className="flex flex-wrap items-center justify-center gap-6 mt-6 text-xs text-[#747D77]"
+        className="flex flex-wrap items-center justify-center gap-6 mt-6 text-xs text-[#57615B]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -618,7 +618,7 @@ export default function PricingPage() {
       suitableIconBg: 'bg-[#EAF8EF]',
       suitableIconColor: 'text-[#0E8F4D]',
       suitableText: 'text-[#3F4742]',
-      notIncludedText: 'text-[#9BA89D]',
+      notIncludedText: 'text-[#7E8A82]',
       Icon: Users,
     },
     {
@@ -635,12 +635,12 @@ export default function PricingPage() {
       ctaClass: 'w-full text-center py-4 rounded-xl font-bold transition-all duration-300 bg-white text-[#064E2B] hover:bg-[#9EE6BC] hover:text-[#064E2B]',
       nameColor: 'text-white',
       positioningColor: 'text-[#9EE6BC]',
-      summaryColor: 'text-white/70',
+      summaryColor: 'text-white/85',
       dividerColor: 'border-[#19B965]/30',
       suitableIconBg: 'bg-[#19B965]/20',
       suitableIconColor: 'text-[#9EE6BC]',
       suitableText: 'text-white/80',
-      notIncludedText: 'text-white/35',
+      notIncludedText: 'text-white/55',
       Icon: Star,
     },
     {
@@ -652,16 +652,16 @@ export default function PricingPage() {
       badgeClass: 'bg-[#19B965]/20 text-[#9EE6BC] border border-[#19B965]/40',
       highlightBoxBg: 'bg-[#0B0F0D]',
       highlightBoxBorder: 'border-[#3F4742]',
-      highlightBoxText: 'text-white/70',
+      highlightBoxText: 'text-white/85',
       highlightBoxIcon: 'text-[#9EE6BC]',
       ctaClass: 'w-full text-center py-4 rounded-xl font-bold transition-all duration-300 bg-[#19B965] text-[#0B0F0D] hover:bg-white hover:text-[#0B0F0D]',
       nameColor: 'text-white',
       positioningColor: 'text-[#9EE6BC]',
-      summaryColor: 'text-white/60',
+      summaryColor: 'text-white/80',
       dividerColor: 'border-[#3F4742]',
       suitableIconBg: 'bg-[#19B965]/10',
       suitableIconColor: 'text-[#19B965]',
-      suitableText: 'text-white/70',
+      suitableText: 'text-white/85',
       notIncludedText: 'text-white/25',
       Icon: Building2,
     },
@@ -752,14 +752,14 @@ export default function PricingPage() {
               />
               
               <button
-                className={`relative z-10 px-6 py-2.5 text-sm font-bold rounded-[10px] transition-colors duration-300 w-32 ${!isYearly ? 'text-[#0B0F0D]' : 'text-[#747D77]'}`}
+                className={`relative z-10 px-6 py-2.5 text-sm font-bold rounded-[10px] transition-colors duration-300 w-32 ${!isYearly ? 'text-[#0B0F0D]' : 'text-[#57615B]'}`}
                 onClick={() => setIsYearly(false)}
                 aria-pressed={!isYearly}
               >
                 {t('pricing.monthly', 'รายเดือน')}
               </button>
               <button
-                className={`relative z-10 px-6 py-2.5 text-sm font-bold rounded-[10px] transition-colors duration-300 w-32 flex items-center justify-center gap-2 ${isYearly ? 'text-[#0B0F0D]' : 'text-[#747D77]'}`}
+                className={`relative z-10 px-6 py-2.5 text-sm font-bold rounded-[10px] transition-colors duration-300 w-32 flex items-center justify-center gap-2 ${isYearly ? 'text-[#0B0F0D]' : 'text-[#57615B]'}`}
                 onClick={() => setIsYearly(true)}
                 aria-pressed={isYearly}
               >
@@ -842,7 +842,7 @@ export default function PricingPage() {
                           <span className={`text-sm font-bold ${cfg.isDark ? 'text-white' : 'text-[#0B0F0D]'}`}>
                             {pkg.currency}
                           </span>
-                          <span className={`text-xs ${cfg.isDark ? 'text-white/50' : 'text-[#747D77]'}`}>
+                          <span className={`text-xs ${cfg.isDark ? 'text-white/50' : 'text-[#57615B]'}`}>
                             / {isYearly ? t('pricing.perYear', 'ปี') : pkg.period}
                           </span>
                         </div>
@@ -912,7 +912,7 @@ export default function PricingPage() {
                     </h4>
                     
                     <div className="mb-6">
-                      <p className={`text-xs font-bold uppercase tracking-wider mb-3 ${i === 0 ? 'text-[#747D77]' : 'text-white/50'}`}>
+                      <p className={`text-xs font-bold uppercase tracking-wider mb-3 ${i === 0 ? 'text-[#57615B]' : 'text-white/50'}`}>
                         {i === 0 ? 'Suitable For' : 'เหมาะกับ'}
                       </p>
                       <ul className="space-y-2">
@@ -926,12 +926,12 @@ export default function PricingPage() {
                     </div>
 
                     <div>
-                      <p className={`text-xs font-bold uppercase tracking-wider mb-3 ${i === 0 ? 'text-[#9BA89D]' : 'text-white/35'}`}>
+                      <p className={`text-xs font-bold uppercase tracking-wider mb-3 ${i === 0 ? 'text-[#7E8A82]' : 'text-white/55'}`}>
                         {i === 0 ? 'Not Included' : 'ไม่รวมในแพ็กเกจ'}
                       </p>
                       <ul className="space-y-2">
                         {notIncluded.map((item, ni) => (
-                          <li key={ni} className={`flex items-start gap-2 text-sm ${i === 0 ? 'text-[#9BA89D]' : 'text-white/40'}`}>
+                          <li key={ni} className={`flex items-start gap-2 text-sm ${i === 0 ? 'text-[#7E8A82]' : 'text-white/60'}`}>
                             <XCircle className="w-4 h-4 flex-shrink-0 mt-0.5 opacity-60" aria-hidden="true" />
                             {item}
                           </li>

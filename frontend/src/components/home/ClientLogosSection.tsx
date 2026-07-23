@@ -13,7 +13,7 @@ function PartnerLogo({ partner }: { partner: typeof PARTNERS[0] }) {
 
   return (
     <div
-      className="group relative flex flex-col items-center justify-center p-6 mx-4 w-48 sm:w-56 h-32 bg-white border border-[#E7EBE8] rounded-2xl grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-card cursor-pointer"
+      className="group relative flex flex-col items-center justify-center p-6 mx-4 w-48 sm:w-56 h-32 bg-transparent grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
       title={`${partner.name} - ${translatedIndustry}`}
     >
       <div className="flex items-center gap-3">
@@ -22,7 +22,7 @@ function PartnerLogo({ partner }: { partner: typeof PARTNERS[0] }) {
         ) : (
           <div className="flex items-center gap-3 w-full justify-center">
             <div className="w-8 h-8 rounded-full border border-[#747D77] group-hover:border-[#19B965] flex items-center justify-center transition-colors duration-300 bg-[#FAFCFB] flex-shrink-0">
-              <Briefcase className="w-4 h-4 text-[#747D77] group-hover:text-[#19B965] transition-colors duration-300" />
+              <Briefcase className="w-4 h-4 text-[#57615B] group-hover:text-[#19B965] transition-colors duration-300" />
             </div>
             <span className="text-[#3F4742] text-sm md:text-base font-bold whitespace-nowrap tracking-wider group-hover:text-[#0B0F0D] truncate max-w-[120px]">
               {partner.name}
@@ -34,7 +34,7 @@ function PartnerLogo({ partner }: { partner: typeof PARTNERS[0] }) {
       {/* Tooltip-like element visible on hover */}
       <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none w-max z-20">
         <div className="bg-[#0B0F0D] text-white text-xs py-1.5 px-3 rounded-lg font-medium shadow-floating whitespace-nowrap">
-          {translatedIndustry} <span className="text-[#747D77] mx-1">|</span> <span className="text-[#19B965]">{tooltip}</span>
+          {translatedIndustry} <span className="text-[#57615B] mx-1">|</span> <span className="text-[#19B965]">{tooltip}</span>
         </div>
       </div>
     </div>

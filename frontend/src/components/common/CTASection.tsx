@@ -62,7 +62,7 @@ export default function CTASection({
               {finalTitle}
             </h2>
             
-            <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
+            <p className="text-white/85 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
               {finalDesc}
             </p>
           </motion.div>

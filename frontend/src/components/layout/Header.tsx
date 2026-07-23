@@ -59,8 +59,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         scrolled
-          ? 'bg-white/96 backdrop-blur-[16px] shadow-[0_4px_24px_rgba(11,15,13,0.10)] border-b border-[#19B965]/20 py-1'
-          : 'bg-white/97 backdrop-blur-sm border-b border-[#DDE4DF] shadow-[0_1px_6px_rgba(11,15,13,0.04)] py-2'
+          ? 'bg-white/95 backdrop-blur-[16px] shadow-[0_4px_24px_rgba(11,15,13,0.10)] border-b border-[#19B965]/20 py-1'
+          : 'bg-white border-b border-[#DDE4DF] shadow-[0_1px_6px_rgba(11,15,13,0.04)] py-2'
       }`}
       role="banner"
     >
@@ -153,7 +153,7 @@ export default function Header() {
               aria-label={t('mobile.label')}
             >
               <div className="container-custom py-6 flex flex-col gap-2">
-                <p className="px-4 pb-4 text-[10px] font-bold tracking-[0.25em] uppercase text-[#747D77]">{t('mobile.eyebrow')}</p>
+                <p className="px-4 pb-4 text-[10px] font-bold tracking-[0.25em] uppercase text-[#57615B]">{t('mobile.eyebrow')}</p>
                 {NAV_ITEMS.map((item, index) => (
                   <motion.div
                     key={item.path}
@@ -170,7 +170,7 @@ export default function Header() {
                       }`}
                       aria-current={isActive(item.path) ? 'page' : undefined}
                     >
-                      <span className="mr-4 text-xs font-bold text-[#747D77]/50">0{index + 1}</span>
+                      <span className="mr-4 text-xs font-bold text-[#57615B]/50">0{index + 1}</span>
                       {navLabel(item.path)}
                       {isActive(item.path) && (
                         <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#0E8F4D]" aria-hidden="true" />
@@ -186,7 +186,7 @@ export default function Header() {
                   transition={{ delay: 0.3, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold text-[#747D77] uppercase tracking-wider">{t('language.label')}</span>
+                    <span className="text-xs font-bold text-[#57615B] uppercase tracking-wider">{t('language.label')}</span>
                     <LanguageSwitcher />
                   </div>
                   <Link

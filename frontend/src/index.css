@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================
+   Design Tokens (central system)
+   ============================================= */
+:root {
+  /* Text colors — WCAG-checked on white */
+  --color-text-primary: #101613;   /* headings ~17:1 */
+  --color-text-secondary: #3F4742; /* body ~9.6:1 */
+  --color-text-muted: #57615B;     /* secondary ~6.3:1 */
+  /* Text on dark surfaces */
+  --color-text-inverse: #FFFFFF;
+  --color-text-inverse-soft: rgba(255, 255, 255, 0.85);
+  --color-text-inverse-muted: #A9B4AD;
+  /* Brand */
+  --color-brand: #19B965;
+  --color-brand-dark: #064E2B;
+  --color-brand-mid: #0E8F4D;
+  --color-surface: #FAFCFB;
+  /* Image radius system (responsive, one source of truth) */
+  --radius-img-lg: 28px;
+  --radius-img-md: 20px;
+  --radius-img-sm: 14px;
+  /* Shadow / motion */
+  --shadow-image: drop-shadow(0 22px 42px rgba(11, 15, 13, 0.18)) drop-shadow(0 5px 13px rgba(11, 15, 13, 0.09));
+  --duration-fast: 0.3s;
+  --duration-normal: 0.6s;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (max-width: 640px) {
+  :root {
+    --radius-img-lg: 20px;
+    --radius-img-md: 16px;
+    --radius-img-sm: 12px;
+  }
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -324,7 +359,7 @@
 .feature-row-desc {
   font-size: 11px;
   line-height: 1.4;
-  color: #9BA89D;
+  color: #6B756E;
   margin-top: 2px;
   font-weight: 400;
 }
@@ -401,6 +436,51 @@
 .animate-float-slow {
   animation: floatY 9s ease-in-out infinite;
   animation-delay: 1s;
+}
+
+/* =============================================
+   Image presentation system
+   ============================================= */
+/* Rounded corners for images — responsive via tokens */
+.img-radius-lg { border-radius: var(--radius-img-lg); }
+.img-radius-md { border-radius: var(--radius-img-md); }
+.img-radius-sm { border-radius: var(--radius-img-sm); }
+
+/* Gentle "ดุ๊กดิ๊ก" idle motions — staggered phases so images never move in sync */
+.img-drift-a { animation: imgDriftA 8s ease-in-out infinite; }
+.img-drift-b { animation: imgDriftB 10s ease-in-out infinite; animation-delay: -3s; }
+.img-drift-c { animation: imgDriftC 12s ease-in-out infinite; animation-delay: -6s; }
+/* Pause idle drift on hover so the hover lift/scale transition takes over cleanly */
+.img-drift-a:hover, .img-drift-b:hover, .img-drift-c:hover,
+.group:hover .img-drift-a, .group:hover .img-drift-b, .group:hover .img-drift-c {
+  animation-play-state: paused;
+}
+
+@keyframes imgDriftA {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(0.6deg); }
+}
+@keyframes imgDriftB {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(4px, -7px) rotate(-0.7deg); }
+  66% { transform: translate(-3px, -3px) rotate(0.4deg); }
+}
+@keyframes imgDriftC {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.015); }
+}
+
+/* Mobile: smaller amplitude so motion stays calm */
+@media (max-width: 768px) {
+  .img-drift-a, .img-drift-b, .img-drift-c,
+  .animate-float, .animate-float-delay, .animate-float-slow {
+    animation-name: floatYsm;
+    animation-duration: 9s;
+  }
+}
+@keyframes floatYsm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 /* Pulse ring around icons */

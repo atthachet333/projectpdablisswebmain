@@ -39,7 +39,7 @@ function LocationMap() {
   const { t } = useTranslation();
 
   return (
-    <div className="rounded-xl overflow-hidden border-none bg-transparent flex-1 min-h-[260px] relative z-10 group/map">
+    <div className="img-radius-md overflow-hidden border-none bg-transparent flex-1 min-h-[260px] relative z-10 group/map">
       {/* Always show this layer — it reveals when image loads or stays as placeholder */}
       {hasImage !== true && (
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
@@ -51,7 +51,7 @@ function LocationMap() {
             <div className="absolute inset-0 rounded-full border border-[#19B965]/30 animate-ping opacity-40" aria-hidden="true" />
           </div>
           <p className="text-sm font-extrabold text-white mb-1">{COMPANY_INFO.nameFull}</p>
-          <p className="text-xs text-white/70 font-medium leading-relaxed mb-3">{COMPANY_INFO.address}</p>
+          <p className="text-xs text-white/85 font-medium leading-relaxed mb-3">{COMPANY_INFO.address}</p>
           <p className="text-[10px] text-white/40 leading-relaxed">{t('pricing.mapPlaceholder', 'วางรูปแผนที่ที่ public/location-map.png')}</p>
           {import.meta.env.VITE_GOOGLE_MAPS_URL && (
             <a
@@ -296,7 +296,7 @@ export default function ContactPage() {
                   <div>
                     <p className={`font-extrabold text-sm mb-1 opacity-90 ${channel.textTheme}`}>{channel.label}</p>
                     <p className={`text-base font-bold truncate mb-2 ${channel.textTheme}`}>{channel.value}</p>
-                    <p className={`text-xs leading-relaxed ${channel.id === 'phone' ? 'text-white/70' : 'text-[#747D77]'}`}>{channel.desc}</p>
+                    <p className={`text-xs leading-relaxed ${channel.id === 'phone' ? 'text-white/85' : 'text-[#57615B]'}`}>{channel.desc}</p>
                   </div>
                 </motion.a>
               );
@@ -342,7 +342,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#747D77]">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#57615B]">
                         <User className="w-5 h-5" />
                       </div>
                       <input
@@ -354,7 +354,7 @@ export default function ContactPage() {
                         aria-required="true"
                         aria-describedby={errors.fullName ? 'fullName-error' : undefined}
                       />
-                      <label htmlFor="fullName" className="absolute left-11 top-1 text-xs font-bold text-[#747D77] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#747D77]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
+                      <label htmlFor="fullName" className="absolute left-11 top-1 text-xs font-bold text-[#57615B] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#57615B]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
                         {t('contact.form.fields.fullName', 'ชื่อ-นามสกุล')} <span className="text-red-500">*</span>
                       </label>
                       {errors.fullName && <p id="fullName-error" className="text-red-500 text-xs mt-1 font-medium" role="alert">{errors.fullName.message}</p>}
@@ -362,7 +362,7 @@ export default function ContactPage() {
 
                     {/* Company */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#747D77]">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#57615B]">
                         <Building className="w-5 h-5" />
                       </div>
                       <input
@@ -372,14 +372,14 @@ export default function ContactPage() {
                         placeholder={t('contact.form.fields.company', 'ชื่อบริษัท')}
                         {...register('companyName')}
                       />
-                      <label htmlFor="companyName" className="absolute left-11 top-1 text-xs font-bold text-[#747D77] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#747D77]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
+                      <label htmlFor="companyName" className="absolute left-11 top-1 text-xs font-bold text-[#57615B] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#57615B]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
                         {t('contact.form.fields.company', 'ชื่อบริษัท')}
                       </label>
                     </div>
 
                     {/* Email */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#747D77]">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#57615B]">
                         <Mail className="w-5 h-5" />
                       </div>
                       <input
@@ -391,7 +391,7 @@ export default function ContactPage() {
                         aria-required="true"
                         aria-describedby={errors.email ? 'email-error' : undefined}
                       />
-                      <label htmlFor="email" className="absolute left-11 top-1 text-xs font-bold text-[#747D77] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#747D77]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
+                      <label htmlFor="email" className="absolute left-11 top-1 text-xs font-bold text-[#57615B] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#57615B]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
                         {t('contact.form.fields.email', 'อีเมล')} <span className="text-red-500">*</span>
                       </label>
                       {errors.email && <p id="email-error" className="text-red-500 text-xs mt-1 font-medium" role="alert">{errors.email.message}</p>}
@@ -399,7 +399,7 @@ export default function ContactPage() {
 
                     {/* Phone */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#747D77]">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#57615B]">
                         <Phone className="w-5 h-5" />
                       </div>
                       <input
@@ -411,7 +411,7 @@ export default function ContactPage() {
                         aria-required="true"
                         aria-describedby={errors.phone ? 'phone-error' : undefined}
                       />
-                      <label htmlFor="phone" className="absolute left-11 top-1 text-xs font-bold text-[#747D77] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#747D77]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
+                      <label htmlFor="phone" className="absolute left-11 top-1 text-xs font-bold text-[#57615B] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#57615B]/70 peer-focus:top-1 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
                         {t('contact.form.fields.phone', 'เบอร์โทรศัพท์')} <span className="text-red-500">*</span>
                       </label>
                       {errors.phone && <p id="phone-error" className="text-red-500 text-xs mt-1 font-medium" role="alert">{errors.phone.message}</p>}
@@ -437,10 +437,10 @@ export default function ContactPage() {
                         t('contact.subjects.other', 'เรื่องอื่น ๆ'),
                       ].map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
-                    <label htmlFor="subject" className="absolute left-4 top-1 text-xs font-bold text-[#747D77]">
+                    <label htmlFor="subject" className="absolute left-4 top-1 text-xs font-bold text-[#57615B]">
                       {t('contact.form.fields.subject', 'หัวข้อ')} <span className="text-red-500">*</span>
                     </label>
-                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-[#747D77]">
+                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-[#57615B]">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -450,7 +450,7 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div className="relative">
-                    <div className="absolute top-4 left-0 pl-4 flex items-start pointer-events-none text-[#747D77]">
+                    <div className="absolute top-4 left-0 pl-4 flex items-start pointer-events-none text-[#57615B]">
                       <Edit3 className="w-5 h-5" />
                     </div>
                     <textarea
@@ -462,7 +462,7 @@ export default function ContactPage() {
                       aria-required="true"
                       aria-describedby={errors.message ? 'message-error' : undefined}
                     />
-                    <label htmlFor="message" className="absolute left-11 top-2 text-xs font-bold text-[#747D77] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#747D77]/70 peer-focus:top-2 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
+                    <label htmlFor="message" className="absolute left-11 top-2 text-xs font-bold text-[#57615B] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:font-medium peer-placeholder-shown:text-[#57615B]/70 peer-focus:top-2 peer-focus:text-xs peer-focus:font-bold peer-focus:text-[#19B965] cursor-text">
                       {t('contact.form.fields.message', 'รายละเอียด')} <span className="text-red-500">*</span>
                     </label>
                     {errors.message && <p id="message-error" className="text-red-500 text-xs mt-1 font-medium" role="alert">{errors.message.message}</p>}
@@ -480,7 +480,7 @@ export default function ContactPage() {
                         />
                         <Check className="absolute w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity duration-200" />
                       </div>
-                      <span className="text-sm text-[#747D77] leading-relaxed group-hover:text-[#0B0F0D] transition-colors">
+                      <span className="text-sm text-[#57615B] leading-relaxed group-hover:text-[#0B0F0D] transition-colors">
                         {t('contact.form.privacy1', 'ข้าพเจ้ายอมรับ')}{' '}
                         <a href="/privacy" className="text-[#0E8F4D] font-bold hover:text-[#19B965] hover:underline transition-colors">{t('contact.form.privacyLink', 'นโยบายความเป็นส่วนตัว')}</a>
                         {' '}{t('contact.form.privacy2', 'และยินยอมให้ PDA BLISS ติดต่อกลับตามข้อมูลที่ให้ไว้')}
@@ -541,7 +541,7 @@ export default function ContactPage() {
                           <Icon className="w-5 h-5" />
                         </div>
                         <div className="pt-1">
-                          <p className="text-xs font-bold text-[#747D77] mb-1 tracking-wide">{item.label}</p>
+                          <p className="text-xs font-bold text-[#57615B] mb-1 tracking-wide">{item.label}</p>
                           {item.href ? (
                             <a href={item.href} className="text-sm font-medium hover:text-[#9EE6BC] transition-colors text-white">
                               {item.value}
@@ -575,7 +575,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h2 className="text-2xl font-extrabold mb-2">{t('contact.quickHelp.title', 'ต้องการความช่วยเหลือด่วน?')}</h2>
-                <p className="text-white/70 text-base">{t('contact.quickHelp.desc', 'ทีมงานพร้อมดูแลและตอบคำถามของคุณอย่างรวดเร็ว')}</p>
+                <p className="text-white/85 text-base">{t('contact.quickHelp.desc', 'ทีมงานพร้อมดูแลและตอบคำถามของคุณอย่างรวดเร็ว')}</p>
               </div>
             </div>
             <a

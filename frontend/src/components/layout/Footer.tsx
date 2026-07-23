@@ -161,7 +161,7 @@ export default function Footer() {
                   <Phone className="w-4 h-4 text-white group-hover:text-[#19B965] transition-colors" aria-hidden="true" />
                 </div>
                 <div className="flex flex-col pt-1">
-                  <span className="text-xs text-[#747D77] mb-1">Telephone</span>
+                  <span className="text-xs text-[#57615B] mb-1">Telephone</span>
                   <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-[#19B965] transition-colors font-bold text-white">
                     {COMPANY_INFO.phone}
                   </a>
@@ -172,7 +172,7 @@ export default function Footer() {
                   <Mail className="w-4 h-4 text-white group-hover:text-[#19B965] transition-colors" aria-hidden="true" />
                 </div>
                 <div className="flex flex-col pt-1">
-                  <span className="text-xs text-[#747D77] mb-1">Email</span>
+                  <span className="text-xs text-[#57615B] mb-1">Email</span>
                   <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-[#19B965] transition-colors font-bold text-white break-all">
                     {COMPANY_INFO.email}
                   </a>
@@ -183,13 +183,13 @@ export default function Footer() {
                   <MapPin className="w-4 h-4 text-white group-hover:text-[#19B965] transition-colors" aria-hidden="true" />
                 </div>
                 <div className="flex flex-col pt-1">
-                  <span className="text-xs text-[#747D77] mb-1">Office</span>
+                  <span className="text-xs text-[#57615B] mb-1">Office</span>
                   <span className="leading-relaxed">{COMPANY_INFO.address}</span>
                   <span className="flex items-center gap-1.5 text-[#19B965] text-xs mt-2">
                     <Clock className="w-3 h-3" aria-hidden="true" />
                     {t('footer.officeHours', 'จันทร์–ศุกร์ 09:00–18:00 น.')}
                   </span>
-                  <span className="text-[#747D77] text-xs mt-0.5 block">{t('footer.responseTime', 'ตอบกลับภายใน 1 วันทำการ')}</span>
+                  <span className="text-[#57615B] text-xs mt-0.5 block">{t('footer.responseTime', 'ตอบกลับภายใน 1 วันทำการ')}</span>
                 </div>
               </li>
             </ul>
@@ -198,14 +198,14 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#263029] py-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-[#747D77] text-sm text-center md:text-left font-medium">
+          <p className="text-[#57615B] text-sm text-center md:text-left font-medium">
             © {currentYear} PDA BLISS COMPANY LIMITED. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-8">
-            <Link to="/privacy" className="text-[#747D77] hover:text-[#19B965] text-sm transition-colors font-medium">
+            <Link to="/privacy" className="text-[#57615B] hover:text-[#19B965] text-sm transition-colors font-medium">
               {t('footer.privacy', 'Privacy Policy')}
             </Link>
-            <Link to="/terms" className="text-[#747D77] hover:text-[#19B965] text-sm transition-colors font-medium">
+            <Link to="/terms" className="text-[#57615B] hover:text-[#19B965] text-sm transition-colors font-medium">
               {t('footer.terms', 'Terms of Service')}
             </Link>
           </div>
